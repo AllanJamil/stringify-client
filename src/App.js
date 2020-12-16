@@ -3,7 +3,7 @@ import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 
 const App = () => {
-    const [count, setCount] = useState(45);
+    const [count, setCount] = useState(0);
     const [name, setName] = useState("");
     const [messages, setMessages] = useState([]);
 
