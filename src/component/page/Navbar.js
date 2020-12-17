@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import { Link } from "react-router-dom";
-import { FaBars, FaTimes } from 'react-icons/fa';
+import {Link} from "react-router-dom";
+import {FaBars, FaTimes} from 'react-icons/fa';
 import logo from '../../images/stringify-logo.png';
 import {Button} from "../Button";
 import './Navbar.css';
+import {IconContext} from "react-icons";
 
 const Navbar = () => {
     const [click, setClick] = useState(false);
@@ -14,34 +15,36 @@ const Navbar = () => {
     return (
         <div className="navbar">
             <div className="navbar-container container">
-                <Link to='/' className="navbar-logo">
-                    <img style={{width: "15%", minWidth: "150px"}} className="logo" src={logo} alt="logo"/>
+                <Link to='/' className="navbar-logo" onClick={closeMobileMenu}>
+                    <img  className="logo" src={logo} alt="logo"/>
                 </Link>
-                <div className="menu-icon" onClick={handleClick} >
-                    {click ? <FaTimes /> : <FaBars />}
-                </div>
+                <IconContext.Provider value={{color: '#fff'}}>
+                    <div className="menu-icon" onClick={handleClick}>
+                        {click ? <FaTimes/> : <FaBars/>}
+                    </div>
+                </IconContext.Provider>
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <li className="nav-item field">
-                        <input className="nav-field" placeholder="Enter key" type="text"/>
-                        <Button className="btn-join">JOIN</Button>
+                        <input maxLength={6} className="nav-field" placeholder="Enter key" type="text"/>
+                        <Button className="btn-join">Join Meeting</Button>
                     </li>
                     <li className="nav-item">
-                        <Link to='/' className="nav-links">
+                        <Link to='/' className="nav-links" onClick={closeMobileMenu}>
                             Home
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to='/chat' className="nav-links">
+                        <Link to='/chat' className="nav-links" onClick={closeMobileMenu}>
                             New Meeting
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to='/information' className="nav-links">
+                        <Link to='/information' className="nav-links" onClick={closeMobileMenu}>
                             Info
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to='/contact' className="nav-links">
+                        <Link to='/contact' className="nav-links" onClick={closeMobileMenu}>
                             Contact
                         </Link>
                     </li>

@@ -14,12 +14,17 @@
     display: flex;
     justify-content: space-between;
     height: 80px;
+
 }
 
 .container {
     z-index: 1;
     width: 100%;
-    max-width: 1300px;
+    max-width: 1900px;
+}
+
+.logo {
+    width: 200px;
 }
 
 .navbar-logo {
@@ -42,12 +47,13 @@
     justify-content: center;
     list-style: none;
     text-align: center;
-    justify-content: end;
+    justify-content: flex-start;
 }
 
 .nav-item {
     height: 80px;
     border-bottom: 2px solid transparent;
+    text-wrap: none;
 }
 
 .nav-item:hover {
@@ -74,6 +80,10 @@
 @media screen and (max-width: 960px) {
     .NavbarItems {
         position: relative;
+    }
+
+    .logo {
+        width: 180px;
     }
 
     .nav-menu {
@@ -122,7 +132,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        transform: translate(3%, 30%);
+        transform: translate(3%, 20%);
     }
 
     .menu-icon {

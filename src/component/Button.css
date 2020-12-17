@@ -99,7 +99,8 @@
 }
 
 .nav-field[type="text"] {
-    padding: 12px;
+    text-align: center;
+    padding: 12px 0px 12px 0px;
     margin-right: 10px;
     outline: none;
     border: white;
@@ -108,6 +109,7 @@
     border-radius: 5px;
     font-weight: bold;
     text-transform: uppercase;
+    font-size: medium;
     /*1C1D30*/
 }
 
@@ -144,13 +146,6 @@
 
 
     }
-
-
-
-}
-
-.btn-join {
-    color: red !important;
 }
 
 .nav-field::-webkit-input-placeholder {
