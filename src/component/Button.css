@@ -106,12 +106,10 @@
     outline: none;
     border: white;
     color: #f00946;
-    border: 1px solid white;
     border-radius: 5px;
     font-weight: bold;
     text-transform: uppercase;
     font-size: medium;
-    /*1C1D30*/
 }
 
 .field {

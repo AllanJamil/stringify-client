@@ -5,6 +5,8 @@ import ChatPage from './component/page/ChatPage';
 import ErrorPage from './component/page/ErrorPage';
 import Navbar from "./component/page/Navbar";
 import './App.css';
+import InformationPage from "./component/page/InformationPage";
+import ContactPage from "./component/page/ContactPage";
 
 
 const App = () => {
@@ -16,6 +18,8 @@ const App = () => {
                 <Switch>
                     <Route exact path="/" component={LandingPage}></Route>
                     <Route exact path="/chat" component={ChatPage}></Route>
+                    <Route exact path="/information" component={InformationPage}></Route>
+                    <Route exact path="/contact" component={ContactPage}></Route>
                     <Route path="/*" component={ErrorPage}></Route>
                 </Switch>
             </Router>

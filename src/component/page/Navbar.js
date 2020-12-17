@@ -35,12 +35,12 @@ const Navbar = () => {
                     </li>
                     <li className="nav-item">
                         <Link to='/chat' className="nav-links" onClick={closeMobileMenu}>
-                            New Meeting
+                            New&nbsp;Meeting
                         </Link>
                     </li>
                     <li className="nav-item">
                         <Link to='/information' className="nav-links" onClick={closeMobileMenu}>
-                            Info
+                            Information
                         </Link>
                     </li>
                     <li className="nav-item">
