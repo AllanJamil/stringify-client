@@ -9,6 +9,7 @@
     border: none;
     cursor: pointer;
     white-space: nowrap;
+    font-weight: bold;
 }
 
 .btn--primary {
@@ -129,6 +130,11 @@
 }
 
 @media screen and (max-width: 960px) {
+
+    .btn {
+        padding: 12px 0px;
+        margin-bottom: 20px;
+    }
 
     .field {
         display: flex;
