@@ -80,12 +80,14 @@
     display: none;
 }
 
-@media screen and (max-height: 450px) {
+
+@media screen and (max-height: 450px) and (max-width: 960px){
     .nav-menu.active {
         height: auto;
         padding-bottom: 50px;
     }
 }
+
 
 @media screen and (min-width: 960px) {
 
