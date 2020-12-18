@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import LandingPage from './component/page/LandingPage';
+import LandingPage from './component/page/Home/LandingPage';
 import ChatPage from './component/page/ChatPage';
 import ErrorPage from './component/page/ErrorPage';
 import Navbar from "./component/page/Navbar";
