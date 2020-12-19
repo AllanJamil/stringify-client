@@ -46,7 +46,7 @@ function HeroSection({
                                     {description}
                                 </p>
                                 <Link to={link}>
-                                    <Button buttonSize="btn-wide">
+                                    <Button>
                                         {buttonLabel}
                                     </Button>
                                 </Link>

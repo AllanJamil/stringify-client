@@ -9,7 +9,7 @@ import InformationPage from "./component/page/InformationPage";
 import ContactPage from "./component/page/ContactPage";
 import ProfilePage from "./component/page/profile/ProfilePage";
 import Footer from "./component/Footer";
-import {Link} from "react-router-dom";
+/*import {Link} from "react-router-dom";*/
 
 const App = () => {
 
@@ -17,7 +17,7 @@ const App = () => {
         <div>
             <Router>
                 <Navbar/>
-                 <Link to="/chat">Chat</Link>
+                 {/*<Link to="/chat">Chat</Link>*/}
                 <Switch>
                     <Route exact path="/" component={LandingPage}></Route>
                     <Route exact path="/chat" component={ChatPage}></Route>

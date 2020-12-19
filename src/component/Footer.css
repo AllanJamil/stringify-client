@@ -53,3 +53,11 @@
         width: 95%;
     }
 }
+
+
+@media screen and (max-width: 500px) {
+    .content {
+        padding: 0px;
+    }
+
+}
