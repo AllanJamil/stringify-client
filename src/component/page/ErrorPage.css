@@ -12,7 +12,7 @@
     width: 50%;
 }
 
-h1 {
+.header-error {
     color: #f00946;
     font-size: 175px;
 }
@@ -20,13 +20,15 @@ h1 {
 h3 {
     font-size: 30px;
     margin-bottom: 2rem;
+    color: #1c2237;
 }
 
 p {
     font-weight: bold;
+    color: #1c2237;
 }
 @media screen and (min-width: 1096px) {
-    h1 {
+    .header-error {
         font-size: 200px;
     }
 }
@@ -41,7 +43,7 @@ p {
         width: 55%;
     }
 
-    h1 {
+    .header-error {
         font-size: 140px;
     }
 
@@ -95,7 +97,7 @@ p {
         padding: 0 0;
     }
 
-    h1 {
+    .header-error {
         font-size: 100px;
     }
 

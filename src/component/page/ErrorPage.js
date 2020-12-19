@@ -6,7 +6,7 @@ const ErrorPage = () => {
     return (
         <div className="container-error">
             <div className="content">
-                <h1>404</h1>
+                <h1 className="header-error">404</h1>
                 <h3>Oops, looks like you've gotten an error.</h3>
                 <p> The requested URL was not found on this server.</p>
             </div>
