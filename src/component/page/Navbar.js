@@ -16,7 +16,7 @@ const Navbar = () => {
         <div className="navbar">
             <div className="navbar-container container">
                 <Link to='/' className="navbar-logo" onClick={closeMobileMenu}>
-                    <img  className="logo" src={logo} alt="logo"/>
+                    <img className="logo" src={logo} alt="logo"/>
                 </Link>
                 <IconContext.Provider value={{color: '#fff'}}>
                     <div className="menu-icon" onClick={handleClick}>
