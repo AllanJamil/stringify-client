@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import LandingPage from './component/page/home/LandingPage';
-import ChatPage from './component/page/ChatPage';
+import ChatPage from './component/page/chat/ChatPage';
 import ErrorPage from './component/page/ErrorPage';
 import Navbar from "./component/Navbar";
 import './App.css';
@@ -17,7 +17,7 @@ const App = () => {
         <div>
             <Router>
                 <Navbar/>
-      {/*           <Link to="/chat">Chat</Link>*/}
+                 <Link to="/chat">Chat</Link>
                 <Switch>
                     <Route exact path="/" component={LandingPage}></Route>
                     <Route exact path="/chat" component={ChatPage}></Route>
