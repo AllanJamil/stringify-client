@@ -34,3 +34,10 @@
 .submit-btn:hover {
     background-color: #f00946;
 }
+
+@media screen and (min-width: 1195px) {
+    .profile-form {
+        width: 70%;
+        margin: auto;
+    }
+}

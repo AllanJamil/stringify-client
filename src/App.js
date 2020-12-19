@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import LandingPage from './component/page/home/LandingPage';
 import ChatPage from './component/page/ChatPage';
 import ErrorPage from './component/page/ErrorPage';
-import Navbar from "./component/page/Navbar";
+import Navbar from "./component/Navbar";
 import './App.css';
 import InformationPage from "./component/page/InformationPage";
 import ContactPage from "./component/page/ContactPage";
@@ -17,7 +17,7 @@ const App = () => {
         <div>
             <Router>
                 <Navbar/>
-                 <Link to="/profile">Profile test</Link>
+      {/*           <Link to="/chat">Chat</Link>*/}
                 <Switch>
                     <Route exact path="/" component={LandingPage}></Route>
                     <Route exact path="/chat" component={ChatPage}></Route>

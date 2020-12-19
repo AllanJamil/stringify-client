@@ -60,10 +60,12 @@ const AvatarSlider = () => {
 
     const [imageIndex, setImageIndex] = useState(0);
 
+
+
     const renderImages = images.map((img, idx) => {
+
         let previous = imageIndex === 0 ? 15 : imageIndex - 1;
         let next = imageIndex === images.length - 1 ? 0 : imageIndex + 1;
-        console.log(imageIndex)
 
         if (idx === imageIndex) {
             return (
@@ -73,7 +75,7 @@ const AvatarSlider = () => {
             );
         } else if (idx === previous || idx === next) {
             return (
-                <div key={idx} className="slide slide-adjacent">
+                <div key={idx} className="slide slide-adjacent" >
                     <img src={img} alt={img}/>
                 </div>
             );

@@ -1,0 +1,13 @@
+.container-profile {
+    text-align: center;
+    width: 70%;
+    margin: 8rem auto;
+}
+
+@media screen and (max-width: 800px){
+
+    .container-profile {
+        margin: 4rem auto;
+    }
+
+}

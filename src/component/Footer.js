@@ -12,7 +12,7 @@ const Footer = () => {
                 </Link>
                 <div className="footer-content">
                     <div className="content-left">
-                        <Link className="link" to="/content">
+                        <Link className="link" to="/contact">
                             <p className="title">
                                 <u>Developers</u>
                             </p>

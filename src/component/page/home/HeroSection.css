@@ -116,7 +116,7 @@ img {
 
 @media screen and (max-width: 768px) and (max-height: 450px) {
     .row {
-        padding-left: 150px;
+        padding-left: 100px;
     }
 }
 
@@ -129,6 +129,9 @@ img {
     .col {
         max-width: 100%;
         flex-basis: 100%;
+        display: flex;
+        justify-content: center;
+
     }
 
     .home__hero-section {

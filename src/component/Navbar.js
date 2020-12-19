@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import {FaBars, FaTimes} from 'react-icons/fa';
-import logo from '../../images/stringify-logo.png';
-import {Button} from "../Button";
+import logo from '../images/stringify-logo.png';
+import {Button} from "./Button";
 import './Navbar.css';
 import {IconContext} from "react-icons";
 
@@ -34,7 +34,7 @@ const Navbar = () => {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to='/chat' className="nav-links" onClick={closeMobileMenu}>
+                        <Link to='/profile' className="nav-links" onClick={closeMobileMenu}>
                             New&nbsp;Meeting
                         </Link>
                     </li>

@@ -2,18 +2,11 @@ import React from 'react';
 import AvatarSlider from "./AvatarSlider";
 import NameField from "./NameField";
 import '../home/HeroSection.css';
-
-
-
-const getStyle = {
-    textAlign: "center",
-    width: "70%",
-    margin: "10rem auto"
-}
+import './ProfilePage.css'
 
 const ProfilePage = () => {
     return (
-        <div style={getStyle}>
+        <div className="container-profile">
             <div style={{textAlign: "left"}} className="top-line">Almost there!</div>
             <h1 style={{marginBottom: "10px", textAlign: "left"}}>Create Your Profile</h1>
             <p
@@ -24,7 +17,8 @@ const ProfilePage = () => {
                     textAlign: "left"
                 }}
             >
-                Enter your name to connect. You can also pick a avatar to your liking!
+                Please enter your name to connect to the chat session. You can also <span style={{color: "#f00946"}}>
+                <b>pick an avatar</b></span> to your liking!
             </p>
             <AvatarSlider/>
             <NameField/>

@@ -16,7 +16,39 @@
 }
 
 .slide-active {
+    transform: scale(0.6);
+    animation: bummer 300ms;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes bummer {
+    100% {
+        transform: scale(1);
+    }
+}
+
+.enlarge {
+    transform: scale(0.4);
+    animation: enl 300ms;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes enl {
+    100% {
+        transform: scale(0.6);
+    }
+}
+
+.reduce {
     transform: scale(1);
+    animation: redu 300ms;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes reduce {
+    100% {
+        transform: scale(0.6);
+    }
 }
 
 .slide-adjacent {
@@ -46,6 +78,8 @@
     left: 0;
     top: 50%;
 }
+
+
 
 @media screen and (max-width: 960px) {
 
