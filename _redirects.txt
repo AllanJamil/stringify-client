@@ -1,5 +1,0 @@
-/                  /
-/profile           /profile
-/information       /information
-/contact           /contact
-
