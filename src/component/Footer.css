@@ -27,9 +27,28 @@
     margin-bottom: 10px;
 }
 
+.link {
+    text-decoration: none;
+    color: white;
+}
+
+.link:hover {
+    color: #f00946;
+}
+
 @media screen and (max-width: 800px){
 
     .footer-wrapper {
         flex-direction: column;
+        justify-content: center;
+    }
+
+    .footer-content {
+        margin: 25px;
+    }
+
+    .footer-wrapper img {
+        padding-left: 30px;
+        width: 95%;
     }
 }

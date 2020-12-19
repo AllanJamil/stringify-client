@@ -12,12 +12,16 @@ const Footer = () => {
                 </Link>
                 <div className="footer-content">
                     <div className="content-left">
-                        <p className="title">
-                            <u>Developers</u>
-                        </p>
-                        <p>Allan Jamil</p>
-                        <p>Pedram Shirforoushan</p>
+                        <Link className="link" to="/content">
+                            <p className="title">
+                                <u>Developers</u>
+                            </p>
+                            <p>Allan Jamil</p>
+                            <p>Pedram Shirforoushan</p>
+                        </Link>
+
                     </div>
+
                     <div className="content">
                         &copy; Stringify 2021
                     </div>
