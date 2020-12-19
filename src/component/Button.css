@@ -81,7 +81,8 @@
 .primary {
     background-color: #009677;
     color: #fff;
-    border: none;}
+    border: none;
+}
 
 .primary:hover {
     background-color: #f00946;
@@ -120,14 +121,14 @@
 .field:hover {
     border-bottom: 2px solid transparent !important;
 }
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 1095px) {
     .field {
         height: 65% !important;
         width: 80% !important;
     }
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1095px) {
 
     .btn {
         padding: 12px 0px;

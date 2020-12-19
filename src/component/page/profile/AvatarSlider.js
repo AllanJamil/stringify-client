@@ -99,10 +99,18 @@ const AvatarSlider = () => {
         centerPadding: 0,
         nextArrow: <NextArrow/>,
         prevArrow: <PrevArrow/>,
-        beforeChange: (current, next) => setImageIndex(next)
+        beforeChange: (current, next) => setImageIndex(next),
+        responsive: [
+            {
+                breakpoint: 750,
+                settings: {
+                    slidesToShow: 3
+                }
+            }
+        ]
     }
     return (
-        <div className="container-avatar">
+        <div >
             <Slider {...settings}>
                 {renderImages}
             </Slider>

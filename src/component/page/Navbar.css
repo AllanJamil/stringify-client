@@ -81,7 +81,7 @@
 }
 
 
-@media screen and (max-height: 450px) and (max-width: 960px){
+@media screen and (max-height: 450px) and (max-width: 1095px){
     .nav-menu.active {
         height: auto;
         padding-bottom: 50px;
@@ -89,7 +89,7 @@
 }
 
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 1095px) {
 
     .nav-item {
         padding-left: 5px;
@@ -97,11 +97,7 @@
     }
 }
 
-
-
-
-
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1095px) {
     .NavbarItems {
         position: relative;
     }

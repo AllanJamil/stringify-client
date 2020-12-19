@@ -89,9 +89,15 @@ img {
     display: inline-block;
 }
 
+@media screen and (max-width: 1500px){
+    .home__hero-section {
+        padding: 160px 0px;
+    }
+}
+
 @media screen and (min-width: 992px) {
     .row {
-        padding-left: 200px;
+        padding-left: 100px;
     }
 }
 
@@ -113,6 +119,7 @@ img {
         padding-left: 150px;
     }
 }
+
 
 @media screen and (max-width: 768px) {
     .home__hero-text-wrapper {
