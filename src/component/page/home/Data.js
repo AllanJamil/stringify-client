@@ -15,7 +15,7 @@ export const homeObjOne = {
     buttonLabel: 'Get Started',
     imgStart: '',
     img: chatIcon,
-    link: "/chat",
+    link: "/profile",
     alt: 'Chat-bubble'
 };
 
