@@ -6,15 +6,17 @@ const SideBanner = () => {
     return (
         <div className="side-container">
             <div className="content-side">
-                <h1>Contact us</h1>
-                <br/>
-                <p>
-                    If you have any questions or want to get in touch us,
-                    then please use the form.
-                </p>
-                <br/>
-                <p>We look forward to hearing from you!</p>
-                <img src={email} alt="email"/>
+                <div>
+                    <h1>Contact us</h1>
+                    <br/>
+                    <p>
+                        If you have any questions or want to get in touch us,
+                        then please use the form.
+                    </p>
+                    <br/>
+                    <p>We look forward to hearing from you!</p>
+                </div>
+                <img id="email-icon" src={email} alt="email"/>
             </div>
         </div>
     );
