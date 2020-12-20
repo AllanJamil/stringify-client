@@ -1,0 +1,90 @@
+.container-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card-contact {
+    background-color: #1c2237;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    height: 60%;
+    box-shadow: 3px 3px 15px 1px;
+}
+
+.contact-form {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.contact-form form {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 80%;
+    margin: 50px;
+}
+
+.contact-form form input {
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    margin: 5px;
+    background-color: #484853;
+    font-weight: bold;
+    color: #f7f8fa;
+    font-size: 16px;
+}
+
+.contact-form form textarea {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    height: 20vh;
+    background-color: #484853;
+    color: #faf7f7;
+    font-size: 16px;
+}
+
+.contact-form form textarea::placeholder {
+    font-weight: bold;
+    color: #a9a9a9;
+    font-size: 16px;
+}
+
+.contact-form form input::placeholder {
+    color: #a9a9a9;
+}
+
+.upper input {
+    width: 48.7%;
+}
+
+.side-container {
+    background-color: #252837;
+    width: 50%;
+    padding-left: 0;
+    border-radius: 5px 0 0 5px;
+    color: #f7f8fa;
+    display: flex;
+}
+
+.content-side {
+    padding-top: 50px;
+    padding-left: 10%;
+    max-width: 85%;
+}
+
+.content-side img {
+    width: 80%;
+    margin-top: 50px;
+    padding-left: 50px;
+}
