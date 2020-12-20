@@ -1,5 +1,5 @@
 import React from 'react';
-import notFound from '../../images/404.gif';
+import notFound from '../../../images/404.gif';
 import './ErrorPage.css'
 
 const ErrorPage = () => {
