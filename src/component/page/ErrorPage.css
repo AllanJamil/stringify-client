@@ -17,13 +17,13 @@
     font-size: 175px;
 }
 
-h3 {
+.content h3 {
     font-size: 30px;
     margin-bottom: 2rem;
     color: #1c2237;
 }
 
-p {
+.content p {
     font-weight: bold;
     color: #1c2237;
 }
@@ -47,7 +47,7 @@ p {
         font-size: 140px;
     }
 
-    h3 {
+    .content h3 {
         font-size: 25px;
     }
 }
@@ -101,7 +101,7 @@ p {
         font-size: 100px;
     }
 
-    h3 {
+    .content h3 {
         font-size: 18px;
     }
 

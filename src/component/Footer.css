@@ -11,6 +11,11 @@
     width: 90%;
 }
 
+.content-left p {
+    color: #f7f8fa;
+    font-weight: normal;
+}
+
 .footer-content {
     display: flex;
     flex-direction: row;
