@@ -24,6 +24,7 @@ import avatar18 from '../../../images/avatars/avatar18.png';
 import avatar19 from '../../../images/avatars/avatar19.png';
 import avatar20 from '../../../images/avatars/avatar20.png';
 
+
 const images = [
     avatar1,
     avatar2,
