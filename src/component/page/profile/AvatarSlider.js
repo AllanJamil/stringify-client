@@ -19,6 +19,10 @@ import avatar13 from '../../../images/avatars/avatar13.png';
 import avatar14 from '../../../images/avatars/avatar14.png';
 import avatar15 from '../../../images/avatars/avatar15.png';
 import avatar16 from '../../../images/avatars/avatar16.png';
+import avatar17 from '../../../images/avatars/avatar17.png';
+import avatar18 from '../../../images/avatars/avatar18.png';
+import avatar19 from '../../../images/avatars/avatar19.png';
+import avatar20 from '../../../images/avatars/avatar20.png';
 
 const images = [
     avatar1,
@@ -36,7 +40,11 @@ const images = [
     avatar13,
     avatar14,
     avatar15,
-    avatar16
+    avatar16,
+    avatar17,
+    avatar18,
+    avatar19,
+    avatar20
 ]
 
 
