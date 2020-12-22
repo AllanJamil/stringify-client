@@ -73,7 +73,7 @@ const AvatarSlider = () => {
 
     const renderImages = images.map((img, idx) => {
 
-        let previous = imageIndex === 0 ? 15 : imageIndex - 1;
+        let previous = imageIndex === 0 ? images.length - 1 : imageIndex - 1;
         let next = imageIndex === images.length - 1 ? 0 : imageIndex + 1;
 
         if (idx === imageIndex) {
