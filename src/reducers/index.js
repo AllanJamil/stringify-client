@@ -1,5 +1,4 @@
 import { combineReducers } from "redux";
-import {act} from "@testing-library/react";
 
 const selectThemeReducer = (selectedTheme = "light", action) => {
    if (action.type === 'THEME_SELECT')
@@ -16,7 +15,7 @@ const messagesReducer = (messages = [], action) => {
     return messages;
 };
 
-const chatActiveReducer = (isChatActive = false, action) => {
+const chatActiveReducer = (isChatActive = 'FALSE', action) => {
     if (action.type === 'CHAT_ACTIVE')
         return action.payload;
 

@@ -27,7 +27,7 @@ const App = ({isChatActive}) => {
                     <Route path="/*" component={ErrorPage} />
                 </Switch>
                 {
-                    !isChatActive.isActive ? <Footer/> : null
+                    isChatActive === 'FALSE' ? <Footer/> : null
                 }
             </Router>
         </div>

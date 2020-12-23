@@ -2,5 +2,55 @@
     height: 100vh;
     display: flex;
     flex-direction: row;
-    width: 100vw;
+    width: 100%;
 }
+
+.chat-window {
+    background-color: #009677;
+    width: 85%;
+    padding: 0 20px;
+}
+
+.message-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.message-wrapper img {
+    width: 50px;
+    border-radius: 50px;
+    border: 3px solid #f00946;
+}
+
+
+.contact-list {
+    background-color: #f00946;
+    width: 15%;
+    padding: 10px;
+}
+
+.contact-header {
+    font-weight: bold;
+    color: #4a4a4a;
+    margin-bottom: 5px;
+}
+
+.contact-detail-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.contact-detail-wrapper img {
+    width: 45px;
+    border-radius: 50px;
+    border: 3px solid #f00946;
+}
+
+.contact-name {
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+
+

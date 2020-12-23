@@ -1,15 +1,23 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 
+
 import ContactList from "./ContactList";
 import ChatWindow from "./ChatWindow";
 import './ChatPage.css';
 import {setChatActive} from "../../../actions";
 
 
-const ChatPage = ({messages, theme, isActive}) => {
+const ChatPage = ({messages, theme, setChatActive}) => {
 
-    console.log(isActive)
+    useEffect(() => {
+        // when component mounts
+        setChatActive('TRUE');
+
+        //when component unmounts
+        return () => setChatActive('FALSE');
+
+    }, [setChatActive]);
 
     return (
         <div className="container-chat">
@@ -22,8 +30,7 @@ const ChatPage = ({messages, theme, isActive}) => {
 const mapStateToProps = (state) => {
     return {
         messages: state.messages,
-        theme: state.theme,
-        isActive: state.isChatActive
+        theme: state.theme
     };
 };
 

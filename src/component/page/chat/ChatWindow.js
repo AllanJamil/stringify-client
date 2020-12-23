@@ -9,7 +9,7 @@ const ChatWindow = ({messages, theme}) => {
         });*/
 
     return (
-        <div>
+        <div className={`chat-window ${theme}`}>
             <Message theme={theme}
                      message={{from: "Allan", avatar: "avatar5", date: "2020-12-24 16:34", content: "Hej Pedram!"}}
             />
