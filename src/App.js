@@ -9,25 +9,35 @@ import InformationPage from "./component/page/information/InformationPage";
 import ContactPage from "./component/page/contact/ContactPage";
 import ProfilePage from "./component/page/profile/ProfilePage";
 import Footer from "./component/Footer";
+import {connect} from 'react-redux';
 
-const App = () => {
+
+const App = ({isChatActive}) => {
 
     return (
         <div>
-            <Router>
+            <Router >
                 <Navbar/>
                 <Switch>
-                    <Route exact path="/" component={LandingPage}></Route>
-                    <Route exact path="/chat" component={ChatPage}></Route>
-                    <Route exact path="/information" component={InformationPage}></Route>
-                    <Route exact path="/contact" component={ContactPage}></Route>
-                    <Route exact path="/profile" component={ProfilePage}></Route>
-                    <Route path="/*" component={ErrorPage}></Route>
+                    <Route exact path="/" component={LandingPage} />
+                    <Route exact path="/chat" component={ChatPage} />
+                    <Route exact path="/information" component={InformationPage} />
+                    <Route exact path="/contact" component={ContactPage} />
+                    <Route exact path="/profile" component={ProfilePage} />
+                    <Route path="/*" component={ErrorPage} />
                 </Switch>
-                <Footer/>
+                {
+                    !isChatActive.isActive ? <Footer/> : null
+                }
             </Router>
         </div>
     );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        isChatActive: state.isChatActive
+    };
+}
+
+export default connect(mapStateToProps)(App);

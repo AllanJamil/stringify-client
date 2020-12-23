@@ -1,11 +1,36 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {connect} from 'react-redux';
 
-const ChatPage = () => {
+import ContactList from "./ContactList";
+import ChatWindow from "./ChatWindow";
+import './ChatPage.css';
+import {setChatActive} from "../../../actions";
+
+
+const ChatPage = ({messages, theme, isActive}) => {
+
+    console.log(isActive)
+
     return (
-        <div>
-            ChatPage
+        <div className="container-chat">
+            <ChatWindow theme={theme} messages={messages}/>
+            <ContactList/>
         </div>
     );
 };
 
-export default ChatPage;
+const mapStateToProps = (state) => {
+    return {
+        messages: state.messages,
+        theme: state.theme,
+        isActive: state.isChatActive
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setChatActive: e => dispatch(setChatActive(e))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChatPage);

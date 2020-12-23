@@ -16,7 +16,7 @@ export const homeObjOne = {
     imgStart: '',
     img: chatIcon,
     link: "/profile",
-    alt: 'Chat-bubble'
+    alt: 'ChatBox-bubble'
 };
 
 
@@ -33,7 +33,7 @@ export const homeObjTwo = {
     imgStart: 'start',
     img: information,
     link: "/information",
-    alt: 'Chat-bubble'
+    alt: 'ChatBox-bubble'
 };
 
 export const homeObjThree = {
@@ -49,5 +49,5 @@ export const homeObjThree = {
     imgStart: '',
     img: contact,
     link: "/contact",
-    alt: 'Chat-bubble'
+    alt: 'ChatBox-bubble'
 };

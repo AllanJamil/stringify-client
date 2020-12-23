@@ -5,6 +5,7 @@ import '../home/HeroSection.css';
 import './ProfilePage.css'
 
 const ProfilePage = () => {
+
     return (
         <div className="container-profile">
             <div style={{textAlign: "left"}} className="top-line">Almost there!</div>
