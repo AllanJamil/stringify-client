@@ -12,6 +12,8 @@ const ContactList = ({contacts, theme}) => {
         <div className={`contact-list ${theme}`}>
             <div className="contact-header">IN MEETING - 0{/*{contacts.length}*/}</div>
             <ContactDetail contact={{name: "pedram", avatar: "avatar20"}}/>
+            <ContactDetail contact={{name: "Allan", avatar: "avatar16"}}/>
+            <ContactDetail contact={{name: "Sara", avatar: "avatar1"}}/>
         </div>
     );
 };
