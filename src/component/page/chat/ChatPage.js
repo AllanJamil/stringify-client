@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import ContactList from "./ContactList";
 import ChatWindow from "./ChatWindow";
 import './ChatPage.css';
+import './theme.css';
 import {setChatActive} from "../../../actions";
 
 

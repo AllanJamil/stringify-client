@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-const selectThemeReducer = (selectedTheme = "light", action) => {
+const selectThemeReducer = (selectedTheme = "dark", action) => {
    if (action.type === 'THEME_SELECT')
        return action.payload;
 
