@@ -9,6 +9,7 @@ import {setChatActive} from "../../../actions";
 
 
 const ChatPage = ({messages, theme, setChatActive}) => {
+    console.log(theme)
 
     useEffect(() => {
         // when component mounts
@@ -22,7 +23,7 @@ const ChatPage = ({messages, theme, setChatActive}) => {
     return (
         <div className="container-chat">
             <ChatWindow theme={theme} messages={messages}/>
-            <ContactList/>
+            <ContactList theme={theme}/>
         </div>
     );
 };
@@ -30,7 +31,7 @@ const ChatPage = ({messages, theme, setChatActive}) => {
 const mapStateToProps = (state) => {
     return {
         messages: state.messages,
-        theme: state.theme
+        theme: state.selectedTheme
     };
 };
 

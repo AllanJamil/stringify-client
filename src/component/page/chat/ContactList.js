@@ -10,10 +10,10 @@ const ContactList = ({contacts, theme}) => {
 
     return (
         <div className={`contact-list ${theme}`}>
-            <div className="contact-header">IN MEETING - 0{/*{contacts.length}*/}</div>
-            <ContactDetail contact={{name: "pedram", avatar: "avatar20"}}/>
-            <ContactDetail contact={{name: "Allan", avatar: "avatar16"}}/>
-            <ContactDetail contact={{name: "Sara", avatar: "avatar1"}}/>
+            <div className="contact-header">IN MEETING</div>
+            <ContactDetail theme={theme} contact={{name: "pedram", avatar: "avatar20"}}/>
+            <ContactDetail theme={theme} contact={{name: "Allan", avatar: "avatar16"}}/>
+            <ContactDetail theme={theme} contact={{name: "Sara", avatar: "avatar1"}}/>
         </div>
     );
 };

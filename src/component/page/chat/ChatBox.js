@@ -29,7 +29,7 @@ const ChatBox = ({profile, theme}) => {
     };
 
     return (
-        <div className="container-chatbox">
+        <div className={`container-chatbox ${theme}`}>
             <textarea
                 value={message}
                 onChange={event => setMessage(event.target.value)}

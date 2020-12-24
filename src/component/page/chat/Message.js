@@ -9,7 +9,7 @@ const Message = ({message, theme}) => {
                     <div className="identity">
                         {message.from} <span className="message-date">{message.date}</span>
                     </div>
-                    <div className="message-content">{message.content}</div>
+                    <pre className="message-content">{message.content}</pre>
                 </div>
             </div>
             <div className="message-divider" />
