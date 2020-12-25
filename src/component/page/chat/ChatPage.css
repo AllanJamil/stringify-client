@@ -106,7 +106,7 @@
 }
 
 .chat-area textarea {
-    height: 80%;
+    height: 50%;
     width: 95%;
     border-radius: 10px;
     resize: none;
@@ -121,6 +121,7 @@
     justify-content: center;
     height: 100%;
     width: 100%;
+    flex-direction: column;
 }
 
 .send-btn {
