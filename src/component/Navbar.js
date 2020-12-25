@@ -9,9 +9,9 @@ import {IconContext} from "react-icons";
 const Navbar = () => {
     const [click, setClick] = useState(false);
 
+    const handleClick = () => setClick(!click);
+    const closeMobileMenu = () => setClick(false);
 
-    const handleClick = () => setClick(!click)
-    const closeMobileMenu = () => setClick(false)
     return (
         <div className="navbar">
             <div className="navbar-container container">
