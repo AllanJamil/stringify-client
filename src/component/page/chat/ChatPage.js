@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 
 
-import ContactList from "./ContactList";
+/*import ContactList from "./ContactList";*/
 import ChatWindow from "./ChatWindow";
 import './ChatPage.css';
 import './theme.css';
