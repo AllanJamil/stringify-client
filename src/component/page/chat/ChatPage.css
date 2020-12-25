@@ -178,6 +178,7 @@
 
     .chat-area textarea {
         width: 80%;
+        height: 80%;
     }
 
 }
