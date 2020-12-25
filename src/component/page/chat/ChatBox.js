@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import {IoSend} from 'react-icons/io5'
+import {IconContext} from "react-icons";
 
 const ChatBox = ({profile, theme}) => {
     const [message, setMessage] = useState("");
@@ -30,12 +32,27 @@ const ChatBox = ({profile, theme}) => {
 
     return (
         <div className={`container-chatbox ${theme}`}>
-            <textarea
-                value={message}
-                onChange={event => setMessage(event.target.value)}
-                className={`chatbox ${theme}`}
-                onKeyDown={onEnter}
-            />
+            <div className="chat-area">
+                <textarea
+                    value={message}
+                    onChange={event => setMessage(event.target.value)}
+                    className={`chatbox ${theme}`}
+                    onKeyDown={onEnter}
+                />
+                {
+                    message === "" ? null :
+                        (
+                            <div className="send-btn" onClick={() => sendMessage()}>
+                                <IconContext.Provider value={{color: theme === 'dark' ? '#f7f8fa' : '#676767'}}>
+                                    <IoSend size={30}/>
+
+                                </IconContext.Provider>
+                            </div>
+                        )
+                }
+
+
+            </div>
         </div>
     );
 };

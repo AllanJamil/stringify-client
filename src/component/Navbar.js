@@ -13,7 +13,7 @@ const Navbar = () => {
     const closeMobileMenu = () => setClick(false);
 
     return (
-        <div className="navbar">
+        <div className={`navbar ${!click ? null : 'static'}`}>
             <div className="navbar-container container">
                 <Link to='/' className="navbar-logo" onClick={closeMobileMenu}>
                     <img className="logo" src={logo} alt="logo"/>

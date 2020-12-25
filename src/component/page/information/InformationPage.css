@@ -50,3 +50,9 @@
     background-color: #1c2237;
     margin: 20px 0;
 }
+
+@media screen and (max-width: 500px){
+    .column-info {
+        padding: 100px 0;
+    }
+}
