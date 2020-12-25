@@ -7,6 +7,7 @@ import ChatWindow from "./ChatWindow";
 import './ChatPage.css';
 import './theme.css';
 import {setChatActive} from "../../../actions";
+import ChatBox from "./ChatBox";
 
 
 const ChatPage = ({messages, theme, setChatActive}) => {
@@ -23,8 +24,9 @@ const ChatPage = ({messages, theme, setChatActive}) => {
 
     return (
         <div className="container-chat">
-            <ChatWindow theme={theme} messages={messages}/>
-            <ContactList theme={theme}/>
+            <ChatWindow theme={theme} messages={messages} />
+            <ChatBox theme={theme} />
+    {/*        <ContactList theme={theme} />*/}
         </div>
     );
 };

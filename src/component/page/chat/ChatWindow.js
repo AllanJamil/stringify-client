@@ -79,7 +79,6 @@ const ChatWindow = ({messages, theme}) => {
                              " enforce HTTPS only, meaning that an attacker could not eavesdrop on this connection."
                      }}
             />
-            <ChatBox theme={theme}/>
         </div>
     );
 };
