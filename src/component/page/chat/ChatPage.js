@@ -8,9 +8,10 @@ import './ChatPage.css';
 import './theme.css';
 import {setChatActive} from "../../../actions";
 import ChatBox from "./ChatBox";
+import ContactList from "./ContactList";
 
 
-const ChatPage = ({messages, theme, setChatActive}) => {
+const ChatPage = ({chatSession ,messages, theme, setChatActive}) => {
     console.log(theme)
 
     useEffect(() => {
@@ -24,9 +25,9 @@ const ChatPage = ({messages, theme, setChatActive}) => {
 
     return (
         <div className="container-chat">
-            <ChatWindow theme={theme} messages={messages} />
-            <ChatBox theme={theme} />
-    {/*        <ContactList theme={theme} />*/}
+            <ChatWindow theme={theme} messages={messages}/>
+            <ChatBox chatSession={{key: "DA26P8", url: "https://stringify-chat.netlify.app/chat"}} theme={theme}/>
+                <ContactList device="desktop" theme={theme}/>
         </div>
     );
 };

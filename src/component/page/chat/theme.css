@@ -43,7 +43,7 @@
 /*DARK THEME*/
 
 .contact-list.dark {
-    background-color: #2f3136;
+    background-color: #36393f;
 }
 
 .contact-detail-wrapper.dark .contact-name {
@@ -83,4 +83,7 @@
     background-color: #36393f;
 }
 
+.settings.dark table {
+    color: white;
+}
 

@@ -84,7 +84,7 @@
 }
 
 .contact-detail-wrapper img {
-    width: 60px;
+    width: 40px;
     border-radius: 50px;
     border: 3px solid #009677;
 }
@@ -143,16 +143,21 @@
 
 .settings {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 10% 10px 10px 10px;
     height: 25%;
     width: 100%;
+    font-weight: bold;
 }
 
 .btn-settings {
     padding-left: 10px;
     padding-bottom: 10px;
     display: none;
+}
+
+.settings td {
+    padding: 5px;
 }
 
 .btn-area {
@@ -163,6 +168,31 @@
     margin-left: 10px;
 }
 
+.contact-list.mobile {
+    display: none;
+}
+
+#tooltip-top > .tooltip-inner {
+    background-color: #000;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.icon:hover {
+    color: #f00946;
+}
+
+#tooltip-top .tooltip-arrow {
+    background-color: #000;
+    height: 100%;
+}
+
 @media screen and (max-width: 1600px){
     .contact-list {
         width: 30%;
@@ -170,6 +200,18 @@
 }
 
 @media screen and (max-width: 1095px) {
+
+    .contact-list.desktop {
+        display: none;
+    }
+
+    .contact-list.mobile {
+        display: revert;
+        padding-top: 50px;
+        padding-left: 50px;
+        height: 50%;
+        overflow: auto;
+    }
 
     .btn-settings {
         display: revert;
@@ -194,7 +236,7 @@
     }
 
     .contact-list {
-        display: none;
+        width: 100%;
     }
 
     .chat-area {
@@ -228,7 +270,7 @@
     .settings.active {
         z-index: 1;
         right: -100%;
-        animation: slideIn 300ms;
+        animation: slideIn 600ms;
         transition: all ease-in-out;
         -webkit-animation-fill-mode: forwards;
     }
