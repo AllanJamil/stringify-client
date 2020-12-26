@@ -12,6 +12,7 @@ import Toggle from "./Toggle";
 const Settings = ({chatSession, theme, setClick, click}) => {
 
     const[copied, setCopied] = useState(false);
+    console.log(copied)
 
     return (
         <div className={`settings ${click ? "active" : null} ${theme}`}>
