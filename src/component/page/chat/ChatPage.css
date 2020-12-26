@@ -103,10 +103,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .chat-area textarea {
-    height: 50%;
+    height: 80%;
     width: 95%;
     border-radius: 10px;
     resize: none;
@@ -115,10 +116,11 @@
     font-size: 95%;
 }
 
+
 .chat-area {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     height: 100%;
     width: 100%;
     flex-direction: column;
@@ -126,15 +128,39 @@
 
 .send-btn {
     background-color: #009677;
-    padding: 10px;
+    padding: 7px;
     border-radius: 50%;
     display: none;
     margin-left: 5px;
     cursor: pointer;
 }
 
-.send-btn:hover {
-    color: #f00946;
+.close-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.settings {
+    display: flex;
+    justify-content: space-between;
+    padding: 10% 10px 10px 10px;
+    height: 25%;
+    width: 100%;
+}
+
+.btn-settings {
+    padding-left: 10px;
+    padding-bottom: 10px;
+    display: none;
+}
+
+.btn-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 10px;
 }
 
 @media screen and (max-width: 1600px){
@@ -144,6 +170,10 @@
 }
 
 @media screen and (max-width: 1095px) {
+
+    .btn-settings {
+        display: revert;
+    }
 
     .container-chat .chat-window {
         overscroll-behavior: contain;
@@ -161,7 +191,6 @@
 
     .container-chatbox {
         height: 25%;
-        overflow: hidden;
     }
 
     .contact-list {
@@ -176,9 +205,38 @@
         display: revert;
     }
 
+    .chat-area {
+        align-items: center;
+    }
+
     .chat-area textarea {
         width: 80%;
         height: 80%;
+    }
+
+    .settings {
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        position: absolute;
+        height: calc(100vh - 80px);
+        right: 0;
+        bottom: 0;
+        z-index: -200;
+        padding-top: 100px;
+    }
+
+    .settings.active {
+        z-index: 1;
+        right: -100%;
+        animation: slideIn 300ms;
+        transition: all ease-in-out;
+        -webkit-animation-fill-mode: forwards;
+    }
+
+    @keyframes slideIn {
+        100% {
+            right: 0;
+        }
     }
 
 }

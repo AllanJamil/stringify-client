@@ -36,6 +36,10 @@
     background-color: #eaeaea;
 }
 
+.container-chatbox.light .settings {
+    background-color: #f7f8fa;
+}
+
 /*DARK THEME*/
 
 .contact-list.dark {
@@ -74,3 +78,9 @@
     border: none;
     background-color: #40444b;
 }
+
+.container-chatbox.dark .settings {
+    background-color: #36393f;
+}
+
+
