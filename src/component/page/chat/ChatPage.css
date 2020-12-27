@@ -138,7 +138,7 @@
     position: absolute;
     right: 10px;
     top: 10px;
-    display: none;
+    opacity: 0;
 }
 
 .settings {
@@ -250,7 +250,7 @@
 @media screen and (max-width: 1095px) {
 
     .close-btn {
-        display: revert;
+       opacity: 1;
     }
 
     .contact-list.desktop {
