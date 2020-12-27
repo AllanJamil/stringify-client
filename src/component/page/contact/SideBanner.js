@@ -10,8 +10,8 @@ const SideBanner = () => {
                     <h1>Contact us</h1>
                     <br/>
                     <p>
-                        If you have any questions or want to get in touch us,
-                        then please use the form.
+                        If you have any questions or want to get in touch with us,
+                        then please use this form.
                     </p>
                     <br/>
                     <p>We look forward to hearing from you!</p>
