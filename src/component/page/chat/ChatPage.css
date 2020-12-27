@@ -327,7 +327,8 @@
         animation: slideIn 600ms;
         transition: all ease-in-out;
         -webkit-animation-fill-mode: forwards;
-        display: revert;
+        display: flex;
+        flex-direction: column-reverse;
     }
 
     @keyframes slideIn {
