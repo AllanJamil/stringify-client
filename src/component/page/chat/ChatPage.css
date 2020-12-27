@@ -1,10 +1,9 @@
-
 /*root page*/
+
 .container-chat {
     height: calc(100vh - 80px);
     display: flex;
     flex-direction: row;
-    overflow: hidden;
 }
 
 /*chat area*/
@@ -139,6 +138,7 @@
     position: absolute;
     right: 10px;
     top: 10px;
+    display: none;
 }
 
 .settings {
@@ -148,6 +148,11 @@
     height: 25%;
     width: 100%;
     font-weight: bold;
+    position: relative;
+}
+
+.settings table {
+    padding-bottom: 20px;
 }
 
 .btn-settings {
@@ -159,6 +164,8 @@
 .settings td {
     padding: 5px;
 }
+
+
 
 .btn-area {
     display: flex;
@@ -193,6 +200,47 @@
     height: 100%;
 }
 
+.invite-field {
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid;
+    font-weight: bold;
+}
+
+.copy-popup {
+    display: flex;
+    justify-content: center;
+    font-weight: bolder;
+    color: #155724;
+    align-items: center;
+    padding: 7px;
+    height: 40px;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    left: 45%;
+    border: 2px solid #c3e6cb;
+    background-color: #d4edda !important;
+    opacity: 0;
+}
+
+.copy-popup.active {
+    animation: FadeAnimation 2000ms ease-in .2s forwards;
+}
+
+@keyframes FadeAnimation {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
 @media screen and (max-width: 1600px){
     .contact-list {
         width: 30%;
@@ -200,6 +248,10 @@
 }
 
 @media screen and (max-width: 1095px) {
+
+    .close-btn {
+        display: revert;
+    }
 
     .contact-list.desktop {
         display: none;
@@ -211,6 +263,7 @@
         padding-left: 50px;
         height: 50%;
         overflow: auto;
+        border-radius: 5px;
     }
 
     .btn-settings {

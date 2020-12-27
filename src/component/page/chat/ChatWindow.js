@@ -1,9 +1,20 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 
 import Message from "./Message";
 import './scrollbar.css';
 
 const ChatWindow = ({messages, theme}) => {
+
+    const bottom = useRef();
+
+    const scrollToBottom = () => {
+        bottom.current.scrollIntoView({block: "end", inline: "end"});
+    };
+
+    //TODO: fix scroll to bottom
+    useEffect(() => {
+        scrollToBottom();
+    }, [])
 
     /*    const renderMessages = messages.map(message => {
            return <Message message={message} theme={theme}/>
@@ -78,6 +89,7 @@ const ChatWindow = ({messages, theme}) => {
                              " enforce HTTPS only, meaning that an attacker could not eavesdrop on this connection."
                      }}
             />
+            <div ref={bottom}/>
         </div>
     );
 };

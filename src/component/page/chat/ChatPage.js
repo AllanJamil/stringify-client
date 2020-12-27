@@ -12,7 +12,6 @@ import ContactList from "./ContactList";
 
 
 const ChatPage = ({chatSession ,messages, theme, setChatActive}) => {
-    console.log(theme)
 
     useEffect(() => {
         // when component mounts

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {IconContext} from "react-icons";
 import {FaTimes} from "react-icons/fa";
 import {IoCopy, IoSend} from "react-icons/io5";
@@ -11,13 +11,22 @@ import Toggle from "./Toggle";
 
 const Settings = ({chatSession, theme, setClick, click}) => {
 
-    const[copied, setCopied] = useState(false);
-    console.log(copied)
+    const [copied, setCopied] = useState(false);
+
+    useEffect(() => {
+
+        setTimeout(() => setCopied(false), 2000);
+
+    }, [copied]);
 
     return (
         <div className={`settings ${click ? "active" : null} ${theme}`}>
 
-            <ContactList device="mobile" theme={theme} />
+            <div className={`${!copied ? "copy-popup" : "copy-popup active"}`}>
+                <p>COPIED!</p>
+            </div>
+
+            <ContactList device="mobile" theme={theme}/>
 
             <div onClick={() => setClick(!click)} className="close-btn">
                 <IconContext.Provider value={{color: theme === 'dark' ? '#d2dad9' : '#676767'}}>
@@ -74,9 +83,9 @@ const Settings = ({chatSession, theme, setClick, click}) => {
                     </td>
                 </tr>
                 <tr>
-                    <td>Invite by email: </td>
+                    <td>Invite by email:</td>
                     <td>
-                        <input type="text"/>
+                        <input className="invite-field" type="email" placeholder="Email"/>
                     </td>
                     <td>
                         <OverlayTrigger
@@ -98,7 +107,7 @@ const Settings = ({chatSession, theme, setClick, click}) => {
                 </tbody>
             </table>
 
-            <Toggle />
+            <Toggle/>
 
         </div>
     );

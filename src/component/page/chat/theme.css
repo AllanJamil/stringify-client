@@ -40,10 +40,18 @@
     background-color: #f7f8fa;
 }
 
+.settings.light table {
+    color: #353535;
+}
+
+.settings.light .copy-popup {
+    background-color: #353535;
+}
+
 /*DARK THEME*/
 
 .contact-list.dark {
-    background-color: #36393f;
+    background-color: #2f3136;
 }
 
 .contact-detail-wrapper.dark .contact-name {
@@ -84,6 +92,16 @@
 }
 
 .settings.dark table {
-    color: white;
+    color: #f7f8fa;
+}
+
+.settings.dark .invite-field {
+    background-color: #40444b;
+    border: none;
+    color: #f7f8fa;
+}
+
+.settings.dark .copy-popup {
+    background-color: #f7f8fa;
 }
 
