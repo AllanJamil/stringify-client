@@ -61,7 +61,7 @@ const Settings = ({chatSession, theme, setClick, click}) => {
                     </td>
                 </tr>
                 <tr>
-                    <td>URL</td>
+                    <td>URL:</td>
                     <td>{chatSession.url}</td>
                     <td>
                         <OverlayTrigger

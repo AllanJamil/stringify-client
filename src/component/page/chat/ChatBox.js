@@ -54,7 +54,7 @@ const ChatBox = ({chatSession ,profile, theme}) => {
                         message === "" ? null :
                             (
                                 <div className="send-btn" onClick={() => sendMessage()}>
-                                    <IconContext.Provider value={{color: theme === 'dark' ? '#f7f8fa' : '#676767'}}>
+                                    <IconContext.Provider value={{color: '#f7f8fa'}}>
                                         <IoSend size={20}/>
                                     </IconContext.Provider>
                                 </div>

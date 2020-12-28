@@ -34,6 +34,7 @@
 
 .chatbox.light {
     background-color: #eaeaea;
+    border: 1px solid #c3c3c3;
 }
 
 .container-chatbox.light .settings {
