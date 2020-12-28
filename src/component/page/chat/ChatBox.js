@@ -43,6 +43,7 @@ const ChatBox = ({chatSession ,profile, theme}) => {
                     onChange={event => setMessage(event.target.value)}
                     className={`chatbox ${theme}`}
                     onKeyDown={onEnter}
+                    placeholder="Send a message..."
                 />
                 <div className="btn-area">
                     <div onClick={() => setClick(!click)} className="btn-settings">
