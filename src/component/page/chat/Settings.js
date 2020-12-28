@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {IconContext} from "react-icons";
 import {FaTimes} from "react-icons/fa";
-import {IoCopy, IoSend} from "react-icons/io5";
+import {IoSend} from "react-icons/io5";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger"
 import Tooltip from "react-bootstrap/Tooltip"
-import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 import ContactList from "./ContactList";
 import Toggle from "./Toggle";
+import CopyButton from "./CopyButton";
 
 const Settings = ({chatSession, theme, setClick, click}) => {
 
@@ -34,52 +34,20 @@ const Settings = ({chatSession, theme, setClick, click}) => {
                 </IconContext.Provider>
             </div>
 
-            {/*                <ContactList theme={theme} />*/}
-
             <table>
                 <tbody>
                 <tr>
                     <td>KEY:</td>
                     <td>{chatSession.key}</td>
                     <td>
-                        <OverlayTrigger
-                            placement="top"
-                            overlay={
-                                <Tooltip id="tooltip-top">
-                                    Copy to clipboard
-                                </Tooltip>
-                            }
-                        >
-                            <CopyToClipboard text={chatSession.key} onCopy={() => setCopied(true)}>
-                                <div className="icon">
-                                    <IconContext.Provider value={{color: theme === 'dark' ? '#d2dad9' : '#676767'}}>
-                                        <span><IoCopy size={25}/></span>
-                                    </IconContext.Provider>
-                                </div>
-                            </CopyToClipboard>
-                        </OverlayTrigger>
+                        <CopyButton theme={theme} setCopied={e => setCopied(e)} toCopy={chatSession.key}/>
                     </td>
                 </tr>
                 <tr>
                     <td>URL:</td>
                     <td>{chatSession.url}</td>
                     <td>
-                        <OverlayTrigger
-                            placement="top"
-                            overlay={
-                                <Tooltip id="tooltip-top">
-                                    Copy to clipboard
-                                </Tooltip>
-                            }
-                        >
-                            <CopyToClipboard text={chatSession.url} onCopy={() => setCopied(true)}>
-                                <div className="icon">
-                                    <IconContext.Provider value={{color: theme === 'dark' ? '#d2dad9' : '#676767'}}>
-                                        <span><IoCopy size={25}/></span>
-                                    </IconContext.Provider>
-                                </div>
-                            </CopyToClipboard>
-                        </OverlayTrigger>
+                        <CopyButton theme={theme} setCopied={e => setCopied(e)} toCopy={chatSession.url}/>
                     </td>
                 </tr>
                 <tr>

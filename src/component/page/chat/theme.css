@@ -45,6 +45,12 @@
     color: #353535;
 }
 
+.settings.light .invite-field {
+    background-color: #eaeaea;
+    border: 1px solid #c3c3c3;
+    color: #353535;
+}
+
 /*DARK THEME*/
 
 .contact-list.dark {
