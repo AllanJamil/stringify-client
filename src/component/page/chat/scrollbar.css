@@ -37,4 +37,8 @@
     background: #f00946;
 }
 
-
+@media screen and (max-width: 600px) {
+    .chat-window::-webkit-scrollbar {
+        width: 5px;
+    }
+}

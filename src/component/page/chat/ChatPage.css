@@ -339,3 +339,18 @@
 
 }
 
+@media screen and (max-width: 450px) and (max-height: 450px){
+    .container-chatbox {
+        height: 75%;
+    }
+}
+
+@media screen and (max-width: 700px) and (max-height: 200px){
+    .container-chatbox {
+        height: 70%;
+    }
+
+    .container-chat {
+        height: 100vh;
+    }
+}
