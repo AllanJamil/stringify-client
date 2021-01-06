@@ -4,6 +4,20 @@
     margin: 8rem auto;
 }
 
+.container-profile h1 {
+    margin-bottom: 10px;
+    text-align: left;
+    color: #1c2237;
+}
+
+.container-profile p {
+    margin-bottom: 35px;
+    max-width: 440px;
+    font-size: 18px;
+    text-align: left;
+    color: #1c2237;
+}
+
 @media screen and (max-width: 800px){
 
     .container-profile {

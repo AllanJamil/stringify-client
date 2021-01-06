@@ -11,7 +11,7 @@ import ChatBox from "./ChatBox";
 import ContactList from "./ContactList";
 
 
-const ChatPage = ({chatSession ,messages, theme, setChatActive}) => {
+const MeetingPage = ({chatSession, messages, theme, setChatActive}) => {
 
     useEffect(() => {
         // when component mounts
@@ -26,7 +26,7 @@ const ChatPage = ({chatSession ,messages, theme, setChatActive}) => {
         <div className="container-chat">
             <ChatWindow theme={theme} messages={messages}/>
             <ChatBox chatSession={{key: "DA26P8", url: "https://stringify-chat.netlify.app/chat"}} theme={theme}/>
-                <ContactList device="desktop" theme={theme}/>
+            <ContactList device="desktop" theme={theme}/>
         </div>
     );
 };
@@ -44,4 +44,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChatPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MeetingPage);
