@@ -1,6 +1,5 @@
 import React from 'react';
 import ContactDetail from "./ContactDetail";
-import './ChatPage.css';
 
 const ContactList = ({device, contacts, theme}) => {
 

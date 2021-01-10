@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 /*import ContactList from "./ContactList";*/
 import ChatWindow from "./ChatWindow";
-import './ChatPage.css';
+import './MeetingPage.css';
 import './theme.css';
 import {setChatActive} from "../../../actions";
 import ChatBox from "./ChatBox";
@@ -25,7 +25,7 @@ const MeetingPage = ({chatSession, messages, theme, setChatActive}) => {
     return (
         <div className="container-chat">
             <ChatWindow theme={theme} messages={messages}/>
-            <ChatBox chatSession={{key: "DA26P8", url: "https://stringify-chat.netlify.app/chat"}} theme={theme}/>
+            <ChatBox chatSession={{key: "DA26P8", url: "https://stringify-chat.netlify.app/meeting"}} theme={theme}/>
             <ContactList device="desktop" theme={theme}/>
         </div>
     );

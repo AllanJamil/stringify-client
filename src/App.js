@@ -20,7 +20,7 @@ const App = ({isChatActive}) => {
                 <Navbar/>
                 <Switch>
                     <Route exact path="/" component={LandingPage} />
-                    <Route exact path="/chat" component={ChatPage} />
+                    <Route exact path="/meeting" component={ChatPage} />
                     <Route exact path="/information" component={InformationPage} />
                     <Route exact path="/contact" component={ContactPage} />
                     <Route exact path="/profile" component={ProfilePage} />
