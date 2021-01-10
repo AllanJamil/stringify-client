@@ -313,7 +313,8 @@
         flex-direction: column-reverse;
         justify-content: flex-end;
         position: absolute;
-        height: 95%;
+        /*95% for better responsiveness?*/
+        height: calc(100vh - 80px);
         right: 0;
         top: 80px;
         z-index: -200;
