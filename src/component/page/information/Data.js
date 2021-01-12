@@ -4,7 +4,7 @@ export const questionOne = {
 };
 
 export const questionTwo = {
-    question: "Why do I have to create a profile every time I join or creating a meeting?",
+    question: "Why do I have to create a profile every time I join or create a meeting?",
     answer: "The profile creation is merely for being identified by others in a meeting. As this is a session based chat application, it does not utilize any account system. "
 };
 
