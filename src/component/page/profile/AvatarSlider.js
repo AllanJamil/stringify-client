@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Slider from 'react-slick';
 import {FaArrowRight, FaArrowLeft} from "react-icons/fa";
 
@@ -26,8 +26,10 @@ const AvatarSlider = ({setAvatar}) => {
 
     const [imageIndex, setImageIndex] = useState(0);
 
+    useEffect(() => {
+        setAvatar("avatar" + (imageIndex + 1));
+    }, [imageIndex, setAvatar]);
 
-    setAvatar("avatar" + imageIndex);
 
     const renderImages = images.map((img, idx) => {
 
