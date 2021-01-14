@@ -1,10 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import AvatarSlider from "./AvatarSlider";
-import NameField from "./NameField";
 import '../home/HeroSection.css';
 import './ProfilePage.css'
+import './NameField.css';
+import {connect} from 'react-redux';
+import {setProfile} from "../../../actions";
 
-const ProfilePage = () => {
+const ProfilePage = ({setProfile}) => {
+
+    const [avatar, setAvatar] = useState("");
+    const [name, setName] = useState("");
+
+    const createProfile = e => {
+        e.preventDefault();
+        console.log(avatar);
+    };
+
+    const getAvatar = index => {
+        return "avatar" + index;
+    };
 
     return (
         <div className="container-profile">
@@ -14,10 +28,30 @@ const ProfilePage = () => {
                 Please enter your name to connect to the chat session. You can also <span style={{color: "#f00946"}}>
                 <b>pick an avatar</b></span> to your liking!
             </p>
-            <AvatarSlider/>
-            <NameField/>
+            <AvatarSlider getAvatar={index => setAvatar(getAvatar(index))}/>
+            {/*<NameField/>*/}
+            <form className="profile-form">
+                <input
+                    value={name}
+                    onChange={event => setName(event.target.value)}
+                    className="name-field"
+                    minLength={3}
+                    maxLength={30}
+                    required type="text"
+                    placeholder="Your Name"
+                />
+                <button className="submit-btn" type="submit" onClick={createProfile}>Connect</button>
+            </form>
         </div>
     );
 };
 
-export default ProfilePage;
+const mapStateToProps = state => {
+    return {};
+};
+
+const mapDispatchToProps = dispatch => {
+    return {setProfile: e => dispatch(setProfile(e))}
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);

@@ -6,12 +6,12 @@ import './AvatarSlider.css';
 import {images} from "./AvatarData";
 
 
-const AvatarSlider = () => {
+const AvatarSlider = ({getAvatar}) => {
 
     const NextArrow = ({onClick}) => {
         return (
             <div className="arrow next" onClick={onClick}>
-                <FaArrowRight/>
+                <FaArrowRight size={25}/>
             </div>
         );
     };
@@ -19,14 +19,14 @@ const AvatarSlider = () => {
     const PrevArrow = ({onClick}) => {
         return (
             <div className="arrow prev" onClick={onClick}>
-                <FaArrowLeft/>
+                <FaArrowLeft size={25}/>
             </div>
         );
     };
 
     const [imageIndex, setImageIndex] = useState(0);
 
-
+    getAvatar(imageIndex);
 
     const renderImages = images.map((img, idx) => {
 

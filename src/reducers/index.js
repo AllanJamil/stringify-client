@@ -1,10 +1,10 @@
-import { combineReducers } from "redux";
+import {combineReducers} from "redux";
 
 const selectThemeReducer = (selectedTheme = "dark", action) => {
-   if (action.type === 'THEME_SELECT')
-       return action.payload;
+    if (action.type === 'THEME_SELECT')
+        return action.payload;
 
-   return selectedTheme;
+    return selectedTheme;
 }
 
 const messagesReducer = (messages = [], action) => {
@@ -22,8 +22,16 @@ const chatActiveReducer = (isChatActive = 'FALSE', action) => {
     return isChatActive;
 };
 
+const profileReducer = (profile = null, action) => {
+    if (action.type === 'PROFILE_INFO')
+        return profile.payload;
+
+    return profile;
+};
+
 export default combineReducers({
     selectedTheme: selectThemeReducer,
     messages: messagesReducer,
-    isChatActive: chatActiveReducer
+    isChatActive: chatActiveReducer,
+    profile: profileReducer
 });

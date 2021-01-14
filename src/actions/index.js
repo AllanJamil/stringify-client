@@ -21,3 +21,10 @@ export const setChatActive = (isActive) => {
         payload: isActive
     };
 };
+
+export const setProfile = (profile) => {
+    return {
+        type: 'PROFILE_INFO',
+        payload: profile
+    };
+};
