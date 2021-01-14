@@ -38,3 +38,18 @@
         width: 60%;
     }
 }
+
+.success-mark {
+    font-size: 200px;
+}
+
+.fail-mark {
+    font-size: 250px;
+}
+
+.status-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
