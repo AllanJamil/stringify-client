@@ -6,7 +6,7 @@ import './AvatarSlider.css';
 import {images} from "./AvatarData";
 
 
-const AvatarSlider = ({getAvatar}) => {
+const AvatarSlider = ({setAvatar}) => {
 
     const NextArrow = ({onClick}) => {
         return (
@@ -26,7 +26,8 @@ const AvatarSlider = ({getAvatar}) => {
 
     const [imageIndex, setImageIndex] = useState(0);
 
-    getAvatar(imageIndex);
+
+    setAvatar("avatar" + imageIndex);
 
     const renderImages = images.map((img, idx) => {
 

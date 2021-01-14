@@ -16,9 +16,6 @@ const ProfilePage = ({setProfile}) => {
         console.log(avatar);
     };
 
-    const getAvatar = index => {
-        return "avatar" + index;
-    };
 
     return (
         <div className="container-profile">
@@ -28,7 +25,7 @@ const ProfilePage = ({setProfile}) => {
                 Please enter your name to connect to the chat session. You can also <span style={{color: "#f00946"}}>
                 <b>pick an avatar</b></span> to your liking!
             </p>
-            <AvatarSlider getAvatar={index => setAvatar(getAvatar(index))}/>
+            <AvatarSlider setAvatar={setAvatar}/>
             {/*<NameField/>*/}
             <form className="profile-form">
                 <input
