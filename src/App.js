@@ -8,6 +8,7 @@ import './App.css';
 import InformationPage from "./component/page/information/InformationPage";
 import ContactPage from "./component/page/contact/ContactPage";
 import ProfilePage from "./component/page/profile/ProfilePage";
+import ConnectPage from "./component/page/connection/ConnectPage";
 import Footer from "./component/Footer";
 import {connect} from 'react-redux';
 
@@ -24,6 +25,7 @@ const App = ({isChatActive}) => {
                     <Route exact path="/information" component={InformationPage} />
                     <Route exact path="/contact" component={ContactPage} />
                     <Route exact path="/profile" component={ProfilePage} />
+                    <Route exact path="/connect" component={ConnectPage} />
                     <Route path="/*" component={ErrorPage} />
                 </Switch>
                 {
