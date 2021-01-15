@@ -11,7 +11,7 @@ const AvatarSlider = ({setAvatar}) => {
     const NextArrow = ({onClick}) => {
         return (
             <div className="arrow next" onClick={onClick}>
-                <FaArrowRight size={25}/>
+                <FaArrowRight />
             </div>
         );
     };
@@ -19,7 +19,7 @@ const AvatarSlider = ({setAvatar}) => {
     const PrevArrow = ({onClick}) => {
         return (
             <div className="arrow prev" onClick={onClick}>
-                <FaArrowLeft size={25}/>
+                <FaArrowLeft />
             </div>
         );
     };

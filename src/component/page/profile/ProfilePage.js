@@ -13,7 +13,9 @@ const ProfilePage = ({setProfile}) => {
 
     const createProfile = e => {
         e.preventDefault();
-        console.log(avatar);
+        const tempProfile = {name, avatar};
+        //TODO: fix action and reducer
+        setProfile(tempProfile);
     };
 
 
@@ -37,7 +39,7 @@ const ProfilePage = ({setProfile}) => {
                     required type="text"
                     placeholder="Your Name"
                 />
-                <button className="submit-btn" type="submit" onClick={createProfile}>Connect</button>
+                <button disabled={!name} className="submit-btn" type="submit" onClick={createProfile}>Connect</button>
             </form>
         </div>
     );

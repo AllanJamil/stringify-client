@@ -59,6 +59,7 @@
     position: absolute;
     cursor: pointer;
     z-index: 10;
+    font-size: 25px;
 }
 
 .arrow svg {
@@ -82,6 +83,10 @@
 
 
 @media screen and (max-width: 960px) {
+
+    .arrow {
+        font-size: 15px;
+    }
 
     .next {
         top: 40%
