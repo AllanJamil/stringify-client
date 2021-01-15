@@ -35,3 +35,10 @@ export const setConnectionStatus = (connectionStatus) => {
         payload: connectionStatus
     }
 };
+
+export const setKey = (key) => {
+    return {
+        type: "KEY",
+        payload: key
+    }
+};

@@ -84,6 +84,10 @@
     border: none;
 }
 
+primary:disabled {
+    color: #4a4a4a;
+}
+
 .primary:hover {
     background-color: #f00946;
     color: #fff;

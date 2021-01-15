@@ -1,16 +1,28 @@
 import React, {useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import {FaBars, FaTimes} from 'react-icons/fa';
-import logo from '../images/stringify-logo.png';
-import {Button} from "./Button";
-import './Navbar.css';
+import {connect} from 'react-redux';
 import {IconContext} from "react-icons";
 
-const Navbar = () => {
+import './Navbar.css';
+import logo from '../images/stringify-logo.png';
+import {Button} from "./Button";
+import {setConnectionStatus, setKey} from "../actions";
+
+const Navbar = ({setConnectionStatus, setKey, history}) => {
     const [click, setClick] = useState(false);
+    const [keyValue, setKeyValue] = useState("");
 
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
+
+    const onJoinMeeting = () => {
+        setKey(keyValue);
+        setConnectionStatus("FIND_MEETING");
+        closeMobileMenu();
+        history.push('/connect');
+        setKeyValue("");
+    }
 
     return (
         <div className={`navbar ${!click ? null : 'static'}`}>
@@ -25,8 +37,16 @@ const Navbar = () => {
                 </IconContext.Provider>
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <li className="nav-item field">
-                        <input maxLength={6} className="nav-field" placeholder="Enter key" type="text"/>
-                        <Button className="btn-join">Join Meeting</Button>
+                        <input
+                            value={keyValue}
+                            maxLength={6}
+                            className="nav-field"
+                            placeholder="Enter key"
+                            type="text"
+                            onChange={event => setKeyValue(event.target.value)}
+                        />
+                        {/*TODO: make button listen on ENTER*/ }
+                        <Button disabled={keyValue.length !== 6} onClick={onJoinMeeting} className="btn-join">Join Meeting</Button>
                     </li>
                     <li className="nav-item">
                         <Link to='/' className="nav-links" onClick={closeMobileMenu}>
@@ -54,4 +74,12 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+
+const mapDispatchToProps = dispatch => {
+  return {
+      setKey: e => dispatch(setKey(e)),
+      setConnectionStatus: e => dispatch(setConnectionStatus(e))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(withRouter(Navbar));

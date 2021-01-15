@@ -36,10 +36,18 @@ const connectionStatusReducer = (connectionStatus = null, action) => {
     return connectionStatus;
 }
 
+const keyReducer = (key = "", action) => {
+    if (action.type === 'KEY')
+        return action.payload;
+
+    return key;
+}
+
 export default combineReducers({
     selectedTheme: selectThemeReducer,
     messages: messagesReducer,
     isChatActive: chatActiveReducer,
     profile: profileReducer,
-    connectionStatus: connectionStatusReducer
+    connectionStatus: connectionStatusReducer,
+    key: keyReducer
 });
