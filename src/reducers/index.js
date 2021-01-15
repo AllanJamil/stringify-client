@@ -22,9 +22,10 @@ const chatActiveReducer = (isChatActive = 'FALSE', action) => {
     return isChatActive;
 };
 
-const profileReducer = (profile = null, action) => {
+const profileReducer = (profile = {}, action) => {
+    console.log("FROM REDUCER: " + action)
     if (action.type === 'PROFILE_INFO')
-        return profile.payload;
+        return action.payload;
 
     return profile;
 };

@@ -23,6 +23,7 @@ export const setChatActive = (isActive) => {
 };
 
 export const setProfile = (profile) => {
+    console.log("FROM ACTION: " + profile)
     return {
         type: 'PROFILE_INFO',
         payload: profile

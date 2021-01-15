@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AvatarSlider from "./AvatarSlider";
 import '../home/HeroSection.css';
 import './ProfilePage.css'
@@ -6,16 +6,20 @@ import './NameField.css';
 import {connect} from 'react-redux';
 import {setProfile} from "../../../actions";
 
-const ProfilePage = ({setProfile}) => {
+const ProfilePage = ({profile ,setProfile}) => {
 
     const [avatar, setAvatar] = useState("");
     const [name, setName] = useState("");
 
+    useEffect(() => {
+        console.log(profile)
+    }, [profile]);
+
     const createProfile = e => {
         e.preventDefault();
         const tempProfile = {name, avatar};
-        //TODO: fix action and reducer
         setProfile(tempProfile);
+        setName("");
     };
 
 
@@ -46,7 +50,7 @@ const ProfilePage = ({setProfile}) => {
 };
 
 const mapStateToProps = state => {
-    return {};
+    return {profile: state.profile};
 };
 
 const mapDispatchToProps = dispatch => {
