@@ -28,7 +28,7 @@ const ConnectPage = ({connectionStatus, profile, history}) => {
         } else
             console.log(getChatId());
 
-    });
+    },[connectionStatus,profile]);
 
     return (
         <div className="container-connect">
