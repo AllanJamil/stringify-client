@@ -4,24 +4,25 @@ import '../home/HeroSection.css';
 import './ProfilePage.css'
 import './NameField.css';
 import {connect} from 'react-redux';
-import {setProfile} from "../../../actions";
+import {setConnectionStatus, setProfile} from "../../../actions";
 
-const ProfilePage = ({profile ,setProfile}) => {
+const ProfilePage = ({setProfile, connectionStatus, setConnectionStatus, history}) => {
 
     const [avatar, setAvatar] = useState("");
     const [name, setName] = useState("");
 
     useEffect(() => {
-        console.log(profile)
-    }, [profile]);
+        if (connectionStatus === null) setConnectionStatus("CREATE_MEETING");
+    }, [connectionStatus, setConnectionStatus]);
 
     const createProfile = e => {
         e.preventDefault();
         const tempProfile = {name, avatar};
         setProfile(tempProfile);
         setName("");
+        if (connectionStatus === "CREATE_MEETING") history.push('/connect');
+        if (connectionStatus === "JOIN_MEETING") history.push('/meeting');
     };
-
 
     return (
         <div className="container-profile">
@@ -50,11 +51,16 @@ const ProfilePage = ({profile ,setProfile}) => {
 };
 
 const mapStateToProps = state => {
-    return {profile: state.profile};
+    return {
+        connectionStatus: state.connectionStatus
+    };
 };
 
 const mapDispatchToProps = dispatch => {
-    return {setProfile: e => dispatch(setProfile(e))}
+    return {
+        setProfile: e => dispatch(setProfile(e)),
+        setConnectionStatus: e => dispatch(setConnectionStatus(e))
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);

@@ -22,17 +22,24 @@ const chatActiveReducer = (isChatActive = 'FALSE', action) => {
     return isChatActive;
 };
 
-const profileReducer = (profile = {}, action) => {
-    console.log("FROM REDUCER: " + action)
+const profileReducer = (profile = null, action) => {
     if (action.type === 'PROFILE_INFO')
         return action.payload;
 
     return profile;
 };
 
+const connectionStatusReducer = (connectionStatus = null, action) => {
+    if (action.type === 'CONNECTION_STATUS')
+        return action.payload;
+
+    return connectionStatus;
+}
+
 export default combineReducers({
     selectedTheme: selectThemeReducer,
     messages: messagesReducer,
     isChatActive: chatActiveReducer,
-    profile: profileReducer
+    profile: profileReducer,
+    connectionStatus: connectionStatusReducer
 });
