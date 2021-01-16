@@ -7,14 +7,17 @@ import {IconContext} from "react-icons";
 import './Navbar.css';
 import logo from '../images/stringify-logo.png';
 import {Button} from "./Button";
-import {setConnectionStatus, setKey} from "../actions";
+import {setConnectionStatus, setKeyMeeting} from "../actions";
 
 const Navbar = ({setConnectionStatus, setKey, history}) => {
     const [click, setClick] = useState(false);
     const [keyValue, setKeyValue] = useState("");
 
     const handleClick = () => setClick(!click);
-    const closeMobileMenu = () => setClick(false);
+    const closeMobileMenu = () => {
+        window.scrollTo(0, 0);
+        setClick(false);
+    }
 
     const onJoinMeeting = () => {
         setKey(keyValue);
@@ -77,7 +80,7 @@ const Navbar = ({setConnectionStatus, setKey, history}) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-      setKey: e => dispatch(setKey(e)),
+      setKey: e => dispatch(setKeyMeeting(e)),
       setConnectionStatus: e => dispatch(setConnectionStatus(e))
   };
 };

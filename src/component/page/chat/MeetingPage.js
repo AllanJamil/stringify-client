@@ -1,24 +1,43 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 
-
-/*import ContactList from "./ContactList";*/
 import ChatWindow from "./ChatWindow";
 import './MeetingPage.css';
 import './theme.css';
-import {setChatActive} from "../../../actions";
+import {setChatActive, setConnectionStatus, setKeyMeeting, setMeetingSession, setProfile} from "../../../actions";
 import ChatBox from "./ChatBox";
 import ContactList from "./ContactList";
 
 
-const MeetingPage = ({chatSession, messages, theme, setChatActive}) => {
+const MeetingPage = (
+    {
+        meetingSession,
+        setMeetingSession,
+        profile,
+        setProfile,
+        setKeyMeeting,
+        messages,
+        theme,
+        setChatActive,
+        history
+    }) => {
 
     useEffect(() => {
         // when component mounts
+        if (!profile || !meetingSession) {
+            history.push('/error');
+        }
+
+        setConnectionStatus(null);
         setChatActive('TRUE');
 
         //when component unmounts
-        return () => setChatActive('FALSE');
+        return () => {
+            setChatActive('FALSE');
+            setKeyMeeting("");
+            setMeetingSession(null);
+            setProfile(null);
+        }
 
     }, [setChatActive]);
 
@@ -34,14 +53,20 @@ const MeetingPage = ({chatSession, messages, theme, setChatActive}) => {
 const mapStateToProps = (state) => {
     return {
         messages: state.messages,
-        theme: state.selectedTheme
+        theme: state.selectedTheme,
+        profile: state.profile,
+        meetingSession: state.meetingSession
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setChatActive: e => dispatch(setChatActive(e))
-    }
-}
+        setChatActive: e => dispatch(setChatActive(e)),
+        setProfile: e => dispatch(setProfile(e)),
+        setConnectionStatus: e => dispatch(setConnectionStatus(e)),
+        setMeetingSession: e => dispatch(setMeetingSession(e)),
+        setKeyMeeting: e => dispatch(setKeyMeeting(e)),
+    };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MeetingPage);

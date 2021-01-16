@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import './ConnectPage.css';
 import Loading from "./Loading";
+import {setConnectionStatus, setMeetingSession} from "../../../actions";
 
 const getChatId = () => {
     let url = window.location.href;
@@ -13,7 +14,8 @@ const getChatId = () => {
         return null;
 };
 
-const ConnectPage = ({connectionStatus, profile, history}) => {
+const ConnectPage = ({connectionStatus, setConnectionStatus, profile, keyMeeting, history}) => {
+
 
 
     useEffect(() => {
@@ -24,11 +26,17 @@ const ConnectPage = ({connectionStatus, profile, history}) => {
         } else if (connectionStatus === "CREATE_MEETING") {
             console.log("CREATE MEETING JAO");
         } else if (connectionStatus === "FIND_MEETING") {
-            console.log("FIND MEETING JAO");
-        } else
+            console.log("FIND MEETING BY KEY JAO");
+            console.log(keyMeeting)
+        } else {
+            console.log("FIND MEETING BY CHAT-ID JAO");
             console.log(getChatId());
 
-    },[connectionStatus,profile]);
+            //set find meeting when
+            return () => setConnectionStatus("FIND_MEETING");
+        }
+
+    },[connectionStatus,profile, keyMeeting]);
 
     return (
         <div className="container-connect">
@@ -42,8 +50,15 @@ const ConnectPage = ({connectionStatus, profile, history}) => {
 const mapStateToProps = state => {
     return {
         connectionStatus: state.connectionStatus,
-        profile: state.profile
+        profile: state.profile,
+        keyMeeting: state.keyMeeting
     };
 };
 
-export default connect(mapStateToProps)(ConnectPage);
+const mapDispatchToProps = dispatch => {
+    return {
+        setConnectionStatus: e => dispatch(setConnectionStatus(e))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ConnectPage);

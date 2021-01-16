@@ -33,12 +33,19 @@ export const setConnectionStatus = (connectionStatus) => {
     return {
         type: 'CONNECTION_STATUS',
         payload: connectionStatus
-    }
+    };
 };
 
-export const setKey = (key) => {
+export const setKeyMeeting = (key) => {
     return {
-        type: "KEY",
+        type: 'KEY',
         payload: key
-    }
+    };
+};
+
+export const setMeetingSession = (connectionInfo) => {
+    return {
+        type: 'CONNECTION_INFO',
+        action: connectionInfo
+    };
 };

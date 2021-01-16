@@ -5,7 +5,7 @@ const selectThemeReducer = (selectedTheme = "dark", action) => {
         return action.payload;
 
     return selectedTheme;
-}
+};
 
 const messagesReducer = (messages = [], action) => {
     if (action.type === 'NEW_MESSAGE') {
@@ -34,14 +34,21 @@ const connectionStatusReducer = (connectionStatus = null, action) => {
         return action.payload;
 
     return connectionStatus;
-}
+};
 
 const keyReducer = (key = "", action) => {
     if (action.type === 'KEY')
         return action.payload;
 
     return key;
-}
+};
+
+const meetingSessionReducer = (connectionInfo = null, action) => {
+    if (action.type === 'CONNECTION_INFO')
+        return action.payload;
+
+    return connectionInfo;
+};
 
 export default combineReducers({
     selectedTheme: selectThemeReducer,
@@ -49,5 +56,5 @@ export default combineReducers({
     isChatActive: chatActiveReducer,
     profile: profileReducer,
     connectionStatus: connectionStatusReducer,
-    key: keyReducer
+    keyMeeting: keyReducer
 });
