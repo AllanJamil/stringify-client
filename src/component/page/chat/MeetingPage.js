@@ -48,7 +48,11 @@ const MeetingPage = (
     return (
         <div className="container-chat">
             <ChatWindow theme={theme} messages={messages}/>
-            <ChatBox chatSession={{key: "DA26P8", url: "https://stringify-chat.netlify.app/meeting"}} theme={theme}/>
+            {
+                meetingSession ?  <ChatBox chatSession={{key: meetingSession.key, url: meetingSession.connectUrl}}  theme={theme}/>
+                : null
+            }
+
             <ContactList device="desktop" theme={theme}/>
         </div>
     );

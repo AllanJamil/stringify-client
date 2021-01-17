@@ -17,7 +17,7 @@ const getChatId = () => {
         return null;
 };
 
-const ConnectPage = (props) => {
+const ConnectPage = props => {
 
     const [content, setContent] = useState(
         {
