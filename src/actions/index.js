@@ -8,13 +8,6 @@ export const selectTheme = theme => {
     };
 };
 
-export const addNewMessage = message => {
-    return {
-        type: 'NEW_MESSAGE',
-        payload: message
-    };
-};
-
 export const setChatActive = isActive => {
     return {
         type: 'CHAT_ACTIVE',

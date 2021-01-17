@@ -7,14 +7,6 @@ const selectThemeReducer = (selectedTheme = "dark", action) => {
     return selectedTheme;
 };
 
-const messagesReducer = (messages = [], action) => {
-    if (action.type === 'NEW_MESSAGE') {
-        return [...messages, action.payload];
-    }
-
-    return messages;
-};
-
 const chatActiveReducer = (isChatActive = 'FALSE', action) => {
     if (action.type === 'CHAT_ACTIVE')
         return action.payload;
@@ -52,7 +44,6 @@ const meetingSessionReducer = (meetingSession = null, action) => {
 
 export default combineReducers({
     selectedTheme: selectThemeReducer,
-    messages: messagesReducer,
     isChatActive: chatActiveReducer,
     profile: profileReducer,
     connectionStatus: connectionStatusReducer,

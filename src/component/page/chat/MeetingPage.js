@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 
 import ChatWindow from "./ChatWindow";
@@ -7,6 +7,8 @@ import './theme.css';
 import {setChatActive, setConnectionStatus, setKeyMeeting, setMeetingSession, setProfile} from "../../../actions";
 import ChatBox from "./ChatBox";
 import ContactList from "./ContactList";
+
+const wsSourceUrl = "http://localhost:8080/stringify-chat";
 
 
 const MeetingPage = (
@@ -17,11 +19,12 @@ const MeetingPage = (
         profile,
         setProfile,
         setKey,
-        messages,
         theme,
         setChatActive,
         history
     }) => {
+
+    const [messages, setMessages] = useState([]);
 
     useEffect(() => {
         // when component mounts
@@ -53,7 +56,6 @@ const MeetingPage = (
 
 const mapStateToProps = (state) => {
     return {
-        messages: state.messages,
         theme: state.selectedTheme,
         profile: state.profile,
         meetingSession: state.meetingSession
