@@ -7,6 +7,7 @@ import './theme.css';
 import {setChatActive, setConnectionStatus, setKeyMeeting, setMeetingSession, setProfile} from "../../../actions";
 import ChatBox from "./ChatBox";
 import ContactList from "./ContactList";
+import {establishConnection} from "./ConnectionHandler";
 
 const wsSourceUrl = "http://localhost:8080/stringify-chat";
 
@@ -32,6 +33,7 @@ const MeetingPage = (
             history.push('/error');
         }
 
+        establishConnection(wsSourceUrl, meetingSession.guid);
         setChatActive('TRUE');
 
         //when component unmounts

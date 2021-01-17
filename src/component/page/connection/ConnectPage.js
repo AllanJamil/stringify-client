@@ -35,7 +35,7 @@ const ConnectPage = props => {
                 .then(response => {
                     props.setProfile(response.data.profile);
                     props.setMeeting(response.data.chatSession);
-                    setContent({display: "success", message: "Initializing a new meeting"});
+                    setContent({display: "success", message: "Initializing a new meeting..."});
                 })
                 .catch(error => setContent({display: "failure", message: error.response.data.message}));
 
