@@ -11,11 +11,12 @@ import ContactList from "./ContactList";
 
 const MeetingPage = (
     {
+        setConnectionStatus,
         meetingSession,
-        setMeetingSession,
+        setMeeting,
         profile,
         setProfile,
-        setKeyMeeting,
+        setKey,
         messages,
         theme,
         setChatActive,
@@ -28,18 +29,18 @@ const MeetingPage = (
             history.push('/error');
         }
 
-        setConnectionStatus(null);
         setChatActive('TRUE');
 
         //when component unmounts
         return () => {
             setChatActive('FALSE');
-            setKeyMeeting("");
-            setMeetingSession(null);
+            setConnectionStatus(null);
+            setKey("");
+            setMeeting(null);
             setProfile(null);
         }
 
-    }, [setChatActive]);
+    }, [setChatActive, history, setMeeting, setKey, setProfile, meetingSession, profile, setConnectionStatus]);
 
     return (
         <div className="container-chat">
@@ -64,8 +65,8 @@ const mapDispatchToProps = (dispatch) => {
         setChatActive: e => dispatch(setChatActive(e)),
         setProfile: e => dispatch(setProfile(e)),
         setConnectionStatus: e => dispatch(setConnectionStatus(e)),
-        setMeetingSession: e => dispatch(setMeetingSession(e)),
-        setKeyMeeting: e => dispatch(setKeyMeeting(e)),
+        setMeeting: e => dispatch(setMeetingSession(e)), // unresolved if named setMeetingSession?
+        setKey: e => dispatch(setKeyMeeting(e)) // unresolved if named setKeyMeeting?
     };
 };
 

@@ -43,11 +43,11 @@ const keyReducer = (key = "", action) => {
     return key;
 };
 
-const meetingSessionReducer = (connectionInfo = null, action) => {
+const meetingSessionReducer = (meetingSession = null, action) => {
     if (action.type === 'CONNECTION_INFO')
         return action.payload;
 
-    return connectionInfo;
+    return meetingSession;
 };
 
 export default combineReducers({
@@ -56,5 +56,6 @@ export default combineReducers({
     isChatActive: chatActiveReducer,
     profile: profileReducer,
     connectionStatus: connectionStatusReducer,
-    keyMeeting: keyReducer
+    keyMeeting: keyReducer,
+    meetingSession: meetingSessionReducer
 });

@@ -3,6 +3,7 @@ import {IconContext} from "react-icons";
 import {IoCloseSharp} from "react-icons/io5";
 
 const Error = ({message}) => {
+
     return (
         <div className="status-wrapper">
             <IconContext.Provider value={{color: '#bf3232'}}>
@@ -10,7 +11,12 @@ const Error = ({message}) => {
                     <IoCloseSharp/>
                 </div>
             </IconContext.Provider>
-            <h2 className="connection-feed">{message}</h2>
+            <h2 className="connection-feed">
+                ERROR: {message}
+                <br/>
+                <br/>
+                Bla bla bla
+            </h2>
         </div>
     );
 };

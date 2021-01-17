@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {ImCheckmark} from 'react-icons/im';
 import {IconContext} from "react-icons";
 
-const Success = ({message}) => {
+const Success = ({message, history}) => {
+
+    useEffect(() => {
+       setTimeout(() => history.push("/meeting"), 2000);
+    }, [history]);
+
     return (
         <div className="status-wrapper">
             <IconContext.Provider value={{color: '#2a9100'}}>
