@@ -38,7 +38,7 @@ const Settings = ({chatSession, theme, setClick, click}) => {
                 <tbody>
                 <tr>
                     <td>KEY:</td>
-                    <td>{chatSession.key}</td>
+                    <td className="key-style">{chatSession.key}</td>
                     <td>
                         <CopyButton theme={theme} setCopied={e => setCopied(e)} toCopy={chatSession.key}/>
                     </td>

@@ -5,29 +5,25 @@ let stompClient;
 let meetingID;
 
 export const establishConnection = (wsSourceUrl, meetingId) => {
-    console.log(wsSourceUrl)
     meetingID = meetingId;
-    const socket = new SockJS(wsSourceUrl);
-    stompClient = Stomp.over(socket);
-    stompClient.connect({}, frame => {
-        console.log(frame);
-        stompClient.subscribe(`queue/meeting/${meetingId}`, onMessageReceived);
-        stompClient.subscribe(`queue/connect/${meetingId}`, onProfileConnects);
-        stompClient.subscribe(`queue/disconnect/${meetingId}`, onProfileDisconnects);
+    stompClient = Stomp.over(() =>  {return new SockJS(wsSourceUrl)});
+    stompClient.connect({}, () => {stompClient.subscribe(`/queue/connect/${meetingId}`, () => onProfileConnects);
+        /*stompClient.subscribe(`/queue/meeting/${meetingId}`, frame => onMessageReceived(JSON.parse(frame).connect));*/
+   /*     stompClient.subscribe(`/queue/disconnect/${meetingId}`, frame => onProfileDisconnects(JSON.parse(frame).connect));*/
     });
 };
 
-export const onMessageReceived = message => {
+const onMessageReceived = message => {
     message = JSON.parse(message.body).content;
     console.log(message);
 };
 
-export const onProfileConnects = profile => {
-    profile = JSON.parse(profile.body).content;
-    console.log("CONNECTED: " + profile);
+const onProfileConnects = profile => {
+    const content = JSON.parse(profile).content;
+    console.log("CONNECTED: " + content);
 };
 
-export const onProfileDisconnects = profile => {
+const onProfileDisconnects = profile => {
     profile = JSON.parse(profile.body).content;
     console.log("DISCONECTED: " + profile);
 };

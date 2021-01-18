@@ -54,12 +54,13 @@
 
 .message-content {
     padding-top: 5px;
-    font-size: 95%;
+    font-size: 110%;
     text-wrap: initial;
     white-space: pre-wrap;       /* Since CSS 2.1 */
     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
     white-space: -o-pre-wrap;    /* Opera 7 */
     word-wrap: break-word;
+    line-height: 25px;
 }
 
 /*contact area*/
@@ -98,7 +99,7 @@
 }
 
 .container-chatbox {
-    width: 100%;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,7 +113,8 @@
     resize: none;
     outline: none;
     padding: 5px;
-    font-size: 95%;
+    font-size: 110%;
+    line-height: 25px;
 }
 
 
@@ -143,9 +145,10 @@
 
 .settings {
     display: flex;
+    flex-direction: column-reverse;
     justify-content: space-evenly;
-    padding: 10% 10px 10px 10px;
-    height: 25%;
+    padding: 10% 20px 10px 20px;
+    height: 70%;
     width: 100%;
     font-weight: bold;
     position: relative;
@@ -165,7 +168,9 @@
     padding: 5px;
 }
 
-
+.key-style {
+    letter-spacing: 2px;
+}
 
 .btn-area {
     display: flex;
@@ -249,6 +254,10 @@
 
 @media screen and (max-width: 1095px) {
 
+    .message-content {
+        font-size: 100%;
+    }
+
     .close-btn {
        opacity: 1;
     }
@@ -276,6 +285,7 @@
 
     .container-chat {
         flex-direction: column;
+        width: 100%;
         height: calc(100vh - 80px);
     }
 
@@ -287,6 +297,7 @@
 
     .container-chatbox {
         height: 25%;
+        width: 100%;
     }
 
     .contact-list {
@@ -308,6 +319,7 @@
     .chat-area textarea {
         width: 80%;
         height: 80%;
+        font-size: 95%;
     }
 
     .settings {
@@ -341,6 +353,10 @@
 }
 
 @media screen and (max-width: 450px) and (max-height: 450px){
+    .message-content {
+        font-size: 95%;
+    }
+
     .container-chatbox {
         height: 75%;
     }
