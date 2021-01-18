@@ -1,21 +1,20 @@
 import {Stomp} from "@stomp/stompjs";
-import SockJS from 'sockjs';
+import SockJS from 'sockjs-client';
 
 let stompClient;
 let meetingID;
 
 export const establishConnection = (wsSourceUrl, meetingId) => {
+    console.log(wsSourceUrl)
     meetingID = meetingId;
     const socket = new SockJS(wsSourceUrl);
     stompClient = Stomp.over(socket);
     stompClient.connect({}, frame => {
-        sendConnectNotice();
         console.log(frame);
         stompClient.subscribe(`queue/meeting/${meetingId}`, onMessageReceived);
         stompClient.subscribe(`queue/connect/${meetingId}`, onProfileConnects);
         stompClient.subscribe(`queue/disconnect/${meetingId}`, onProfileDisconnects);
     });
-
 };
 
 export const onMessageReceived = message => {
@@ -33,7 +32,7 @@ export const onProfileDisconnects = profile => {
     console.log("DISCONECTED: " + profile);
 };
 
-const sendConnectNotice = profile => {
+export const sendConnectNotice = profile => {
     stompClient.send(`/app/connect/${meetingID}`, {}, JSON.stringify(profile));
 };
 
