@@ -42,11 +42,19 @@ const meetingSessionReducer = (meetingSession = null, action) => {
     return meetingSession;
 };
 
+const messagesReducer = (messages = [], action) => {
+    if (action.type === 'NEW_MESSAGE')
+        return [...messages, action.payload]
+
+    return messages;
+};
+
 export default combineReducers({
     selectedTheme: selectThemeReducer,
     isChatActive: chatActiveReducer,
     profile: profileReducer,
     connectionStatus: connectionStatusReducer,
     keyMeeting: keyReducer,
-    meetingSession: meetingSessionReducer
+    meetingSession: meetingSessionReducer,
+    messages: messagesReducer
 });

@@ -42,3 +42,10 @@ export const setMeetingSession = meetingSession => {
         payload: meetingSession
     };
 };
+
+export const addNewMessage = message => {
+    return {
+        type: 'NEW_MESSAGE',
+        payload: message
+    };
+};

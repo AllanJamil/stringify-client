@@ -1,41 +1,87 @@
+import React, {useEffect} from 'react';
+import {connect} from 'react-redux';
 import {Stomp} from "@stomp/stompjs";
 import SockJS from 'sockjs-client';
+import {addNewMessage} from "../../../actions";
 
-let stompClient;
-let meetingID;
+const wsSourceUrl = "http://localhost:8080/stringify-chat";
+let stompClient = null;
 
-export const establishConnection = (wsSourceUrl, meetingId) => {
-    meetingID = meetingId;
-    stompClient = Stomp.over(() =>  {return new SockJS(wsSourceUrl)});
-    stompClient.connect({}, () => {stompClient.subscribe(`/queue/connect/${meetingId}`, () => onProfileConnects);
-        /*stompClient.subscribe(`/queue/meeting/${meetingId}`, frame => onMessageReceived(JSON.parse(frame).connect));*/
-   /*     stompClient.subscribe(`/queue/disconnect/${meetingId}`, frame => onProfileDisconnects(JSON.parse(frame).connect));*/
-    });
+const ConnectionHandler = ({meetingId, profile, addNewToMessages}) => {
+
+    const sendDisconnectNotice = profile => {
+        stompClient.send(`/app/disconnect/${meetingID}`, {}, JSON.stringify(profile));
+    };
+
+    const sendMessage = message => {
+        stompClient.send(`/app/meeting/${meetingID}`, {}, JSON.stringify(message));
+    };
+
+    const sendConnectNotice = profile => {
+        stompClient.send(`/app/connect/${meetingId}`, {}, JSON.stringify(profile));
+    };
+
+    const onProfileConnects = frame => {
+        const connectionNotice = JSON.parse(frame.body);
+        const message = {
+            avatar: "notice",
+            from: "Notice",
+            date: connectionNotice.date,
+            content: connectionNotice.connectionMessage
+        }
+        addNewToMessages(message);
+    };
+
+    const onMessageReceived = frame => {
+        const message = JSON.parse(frame.body);
+        addNewToMessages(message);
+    };
+
+
+    const onProfileDisconnects = frame => {
+        const connectionNotice = JSON.parse(frame.body).content;
+        const message = {
+            avatar: "notice",
+            from: "Notice",
+            date: connectionNotice.date,
+            content: connectionNotice.connectionMessage
+        }
+        addNewToMessages(message);
+    };
+
+    useEffect(() => {
+
+        stompClient = Stomp.over(() => {
+            return new SockJS(wsSourceUrl)
+        });
+        stompClient.connect({}, () => {
+            stompClient.subscribe(`/queue/connect/${meetingId}`, onProfileConnects);
+            stompClient.subscribe(`/queue/meeting/${meetingId}`, onMessageReceived);
+            stompClient.subscribe(`/queue/disconnect/${meetingId}`, onProfileDisconnects);
+            sendConnectNotice(profile);
+        });
+
+    }, []);
+
+    return (
+        <div>
+
+        </div>
+    );
 };
 
-const onMessageReceived = message => {
-    message = JSON.parse(message.body).content;
-    console.log(message);
+const mapDispatchToProps = dispatch => {
+    return {
+        addNewToMessages: e => dispatch(addNewMessage(e))
+    }
+
 };
 
-const onProfileConnects = profile => {
-    const content = JSON.parse(profile).content;
-    console.log("CONNECTED: " + content);
-};
+export default connect(null, mapDispatchToProps)(ConnectionHandler);
 
-const onProfileDisconnects = profile => {
-    profile = JSON.parse(profile.body).content;
-    console.log("DISCONECTED: " + profile);
-};
 
-export const sendConnectNotice = profile => {
-    stompClient.send(`/app/connect/${meetingID}`, {}, JSON.stringify(profile));
-};
 
-export const sendDisconnectNotice = profile => {
-    stompClient.send(`/app/disconnect/${meetingID}`, {}, JSON.stringify(profile));
-};
 
-export const sendMessage = message => {
-    stompClient.send(`/app/meeting/${meetingID}`, {}, JSON.stringify(message));
-};
+
+
+

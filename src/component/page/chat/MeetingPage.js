@@ -9,8 +9,6 @@ import ChatBox from "./ChatBox";
 import ContactList from "./ContactList";
 import {establishConnection, sendConnectNotice} from "./ConnectionHandler";
 
-const wsSourceUrl = "http://localhost:8080/stringify-chat";
-
 
 const MeetingPage = (
     {
@@ -33,10 +31,6 @@ const MeetingPage = (
             history.push('/error');
         }
 
-        if (meetingSession) {
-            establishConnection(wsSourceUrl, meetingSession.guid);
-            setTimeout(() => sendConnectNotice(profile), 5000);
-        }
         setChatActive('TRUE');
 
         //when component unmounts
