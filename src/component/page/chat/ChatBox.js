@@ -62,8 +62,6 @@ const ChatBox = ({chatSession ,profile, theme}) => {
                             )
                     }
                 </div>
-
-
             </div>
         </div>
 );

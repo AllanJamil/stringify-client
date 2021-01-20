@@ -7,7 +7,6 @@ import './theme.css';
 import {setChatActive, setConnectionStatus, setKeyMeeting, setMeetingSession, setProfile} from "../../../actions";
 import ChatBox from "./ChatBox";
 import ContactList from "./ContactList";
-import {establishConnection, sendConnectNotice} from "./ConnectionHandler";
 
 
 const MeetingPage = (
