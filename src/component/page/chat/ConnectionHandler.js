@@ -11,11 +11,11 @@ let stompClient = null;
 const ConnectionHandler = ({meetingId, profile, addNewToMessages}) => {
 
     const sendDisconnectNotice = profile => {
-        stompClient.send(`/app/disconnect/${meetingID}`, {}, JSON.stringify(profile));
+        stompClient.send(`/app/disconnect/${meetingId}`, {}, JSON.stringify(profile));
     };
 
     const sendMessage = message => {
-        stompClient.send(`/app/meeting/${meetingID}`, {}, JSON.stringify(message));
+        stompClient.send(`/app/meeting/${meetingId}`, {}, JSON.stringify(message));
     };
 
     const sendConnectNotice = profile => {
