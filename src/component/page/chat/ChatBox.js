@@ -36,7 +36,7 @@ const ChatBox = ({
         console.log(connectionNotice)
 
         const message = {
-            avatar: "avatar15",
+            avatar: "connect",
             from: "Notice",
             date: connectionNotice.date,
             content: connectionNotice.connectionMessage
@@ -55,7 +55,7 @@ const ChatBox = ({
     const onProfileDisconnects = frame => {
         const connectionNotice = JSON.parse(frame.body).content;
         const message = {
-            avatar: "notice",
+            avatar: "disconnect",
             from: "Notice",
             date: connectionNotice.date,
             content: connectionNotice.connectionMessage
@@ -81,6 +81,7 @@ const ChatBox = ({
 
         return () => sendDisconnectNotice(profile);
     });
+
     useEffect(() => {
 
         dangerousOnMount.current();
