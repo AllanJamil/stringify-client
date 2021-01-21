@@ -22,8 +22,6 @@ const MeetingPage = (
         history
     }) => {
 
-    const [messages, setMessages] = useState([]);
-
     useEffect(() => {
         // when component mounts
         if (!profile || !meetingSession) {
@@ -45,7 +43,7 @@ const MeetingPage = (
 
     return (
         <div className="container-chat">
-            <ChatWindow theme={theme} messages={messages}/>
+            <ChatWindow theme={theme} />
             {
                 meetingSession ?
                     <ChatBox profile={profile} meetingSession={meetingSession} theme={theme}/>
