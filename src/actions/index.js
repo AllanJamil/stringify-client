@@ -49,3 +49,17 @@ export const addNewMessage = message => {
         payload: message
     };
 };
+
+export const addProfileConnected = profile => {
+    return {
+        type: 'PROFILE_CONNECT',
+        payload: profile
+    };
+};
+
+export const removeProfileDisconnected = profile => {
+    return {
+        type: 'PROFILE_DISCONNECT',
+        payload: profile
+    };
+};

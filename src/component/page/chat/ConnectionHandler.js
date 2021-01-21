@@ -1,3 +1,4 @@
+/*
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {Stomp} from "@stomp/stompjs";
@@ -51,9 +52,7 @@ const ConnectionHandler = ({meetingId, profile, addNewToMessages}) => {
 
     useEffect(() => {
 
-        stompClient = Stomp.over(() => {
-            return new SockJS(wsSourceUrl)
-        });
+        stompClient = Stomp.over(() => {return new SockJS(wsSourceUrl)});
         stompClient.connect({}, () => {
             stompClient.subscribe(`/queue/connect/${meetingId}`, onProfileConnects);
             stompClient.subscribe(`/queue/meeting/${meetingId}`, onMessageReceived);
@@ -85,3 +84,4 @@ export default connect(null, mapDispatchToProps)(ConnectionHandler);
 
 
 
+*/

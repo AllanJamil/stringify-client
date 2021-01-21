@@ -1,21 +1,106 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {IoSend, IoSettings} from 'react-icons/io5'
 import {IconContext} from "react-icons";
 import Settings from "./Settings";
+import {Stomp} from "@stomp/stompjs";
+import SockJS from "sockjs-client";
+import {connect} from 'react-redux';
 
-const ChatBox = ({chatSession ,profile, theme}) => {
+import {addNewMessage, addProfileConnected, removeProfileDisconnected} from "../../../actions";
+
+const wsSourceUrl = "http://localhost:8080/stringify-chat";
+let stompClient = null;
+
+const ChatBox = ({
+                     meetingSession,
+                     profile,
+                     theme,
+                     addNewToMessages,
+                     addProfileConnected,
+                     removeProfileDisconnected
+                 }) => {
     const [message, setMessage] = useState("");
     const [click, setClick] = useState(false);
 
-    const sendMessage = () => {
-        console.log("Sending message");
+    const sendDisconnectNotice = profile => {
+        stompClient.send(`/app/disconnect/${meetingSession.guid}`, {}, JSON.stringify(profile));
+    };
 
-        /*        let msgOutput = {
+
+    const sendConnectNotice = profile => {
+        stompClient.send(`/app/connect/${meetingSession.guid}`, {}, JSON.stringify(profile));
+    };
+
+    const onProfileConnects = frame => {
+        const connectionNotice = JSON.parse(frame.body);
+        console.log(connectionNotice)
+
+        const message = {
+            avatar: "avatar15",
+            from: "Notice",
+            date: connectionNotice.date,
+            content: connectionNotice.connectionMessage
+        }
+        addNewToMessages(message);
+        addProfileConnected(connectionNotice.profile);
+    };
+
+    const onMessageReceived = frame => {
+        const message = JSON.parse(frame.body);
+        console.log(message)
+        addNewToMessages(message);
+    };
+
+
+    const onProfileDisconnects = frame => {
+        const connectionNotice = JSON.parse(frame.body).content;
+        const message = {
+            avatar: "notice",
+            from: "Notice",
+            date: connectionNotice.date,
+            content: connectionNotice.connectionMessage
+        }
+        addNewToMessages(message);
+        removeProfileDisconnected(connectionNotice.profile);
+    };
+
+    const sendNewMessage = message => {
+        stompClient.send(`/app/send/meeting/${meetingSession.guid}`, {}, JSON.stringify(message));
+    };
+
+    const dangerousOnMount = useRef(() => {
+        stompClient = Stomp.over(() => {
+            return new SockJS(wsSourceUrl)
+        });
+        stompClient.connect({}, () => {
+            stompClient.subscribe(`/queue/connect/${meetingSession.guid}`, onProfileConnects);
+            stompClient.subscribe(`/queue/meeting/${meetingSession.guid}`, onMessageReceived);
+            stompClient.subscribe(`/queue/disconnect/${meetingSession.guid}`, onProfileDisconnects);
+            sendConnectNotice(profile);
+        });
+
+        return () => sendDisconnectNotice(profile);
+    });
+    useEffect(() => {
+
+        dangerousOnMount.current();
+
+
+    }, []);
+
+    const sendMessage = () => {
+
+
+        let msgOutput = {
             from: profile.name,
             avatar: profile.avatar,
-            date: messageTimeStamp(),
             content: message
-        };*/
+        };
+
+        if (message !== ""){
+            sendNewMessage(msgOutput);
+            console.log("Sending message");
+        }
 
         setMessage("");
     }
@@ -35,7 +120,8 @@ const ChatBox = ({chatSession ,profile, theme}) => {
     return (
         <div className={`container-chatbox ${theme}`}>
 
-            <Settings chatSession={chatSession} click={click} theme={theme} setClick={(event) => setClick(event)}/>
+            <Settings meetingSession={meetingSession} click={click} theme={theme}
+                      setClick={(event) => setClick(event)}/>
 
             <div className="chat-area">
                 <textarea
@@ -64,7 +150,15 @@ const ChatBox = ({chatSession ,profile, theme}) => {
                 </div>
             </div>
         </div>
-);
+    );
 };
 
-export default ChatBox;
+const mapDispatchToProps = dispatch => {
+    return {
+        addNewToMessages: e => dispatch(addNewMessage(e)),
+        addProfileConnected: e => dispatch(addProfileConnected(e)),
+        removeProfileDisconnected: e => dispatch(removeProfileDisconnected(e))
+    };
+};
+
+export default connect(null, mapDispatchToProps)(ChatBox);

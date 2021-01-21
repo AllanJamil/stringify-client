@@ -48,7 +48,7 @@ const MeetingPage = (
             <ChatWindow theme={theme} messages={messages}/>
             {
                 meetingSession ?
-                    <ChatBox chatSession={{key: meetingSession.key, url: meetingSession.connectUrl}} theme={theme}/>
+                    <ChatBox profile={profile} meetingSession={meetingSession} theme={theme}/>
                     : null
             }
 

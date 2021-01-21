@@ -9,7 +9,7 @@ import ContactList from "./ContactList";
 import Toggle from "./Toggle";
 import CopyButton from "./CopyButton";
 
-const Settings = ({chatSession, theme, setClick, click}) => {
+const Settings = ({meetingSession, theme, setClick, click}) => {
 
     const [copied, setCopied] = useState(false);
 
@@ -38,16 +38,16 @@ const Settings = ({chatSession, theme, setClick, click}) => {
                 <tbody>
                 <tr>
                     <td>KEY:</td>
-                    <td className="key-style">{chatSession.key}</td>
+                    <td className="key-style">{meetingSession.key}</td>
                     <td>
-                        <CopyButton theme={theme} setCopied={e => setCopied(e)} toCopy={chatSession.key}/>
+                        <CopyButton theme={theme} setCopied={e => setCopied(e)} toCopy={meetingSession.key}/>
                     </td>
                 </tr>
                 <tr>
                     <td>URL:</td>
-                    <td>{chatSession.url}</td>
+                    <td>{meetingSession.connectUrl}</td>
                     <td>
-                        <CopyButton theme={theme} setCopied={e => setCopied(e)} toCopy={chatSession.url}/>
+                        <CopyButton theme={theme} setCopied={e => setCopied(e)} toCopy={meetingSession.connectUrl}/>
                     </td>
                 </tr>
                 <tr>

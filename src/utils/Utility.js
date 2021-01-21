@@ -1,6 +1,6 @@
 
 export const messageTimeStamp = () => {
-    let d = new Date(),
+    let d = new Date().toLocaleTimeString('en-GB'),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear(),
