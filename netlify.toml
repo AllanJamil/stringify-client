@@ -4,4 +4,6 @@ to = "/"
 status = 200
 
 
-
+...
+command = "CI= npm run build"
+...
