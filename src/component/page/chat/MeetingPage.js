@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
 
 import ChatWindow from "./ChatWindow";
@@ -34,7 +34,7 @@ const MeetingPage = (
         connectionStatus
     }) => {
 
-    useEffect(() => {
+    const dangerousOnMount = useRef(() => {
         if (meetingSession) {
             getMessageHistory(meetingSession.guid, 0)
                 .then(response => {
@@ -45,15 +45,18 @@ const MeetingPage = (
                 .catch(error => console.log(error));
 
             if (connectionStatus !== "CREATE_MEETING")
-            getConnectedProfiles(meetingSession.guid)
-                .then(response => {
-                    response.data.forEach(profile => {
-                        addProfileConnected(profile);
-                    });
-                })
-                .catch(error => console.log(error));
+                getConnectedProfiles(meetingSession.guid)
+                    .then(response => {
+                        response.data.forEach(profile => {
+                            addProfileConnected(profile);
+                        });
+                    })
+                    .catch(error => console.log(error));
         }
+    });
 
+    useEffect(() => {
+        dangerousOnMount.current();
     }, []);
 
     useEffect(() => {

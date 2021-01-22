@@ -4,14 +4,14 @@ import {IconContext} from "react-icons";
 
 const Success = ({connectionStatus, message, history}) => {
 
-    let redirect = "";
 
     useEffect(() => {
+        let redirect = "";
         if (connectionStatus === "CREATE_MEETING")
             redirect = "/meeting";
         else
             redirect = "/profile";
-            setTimeout(() => history.push(redirect), 2000);
+        setTimeout(() => history.push(redirect), 2000);
     }, [history, connectionStatus]);
 
     return (
