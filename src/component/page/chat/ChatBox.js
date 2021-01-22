@@ -58,18 +58,13 @@ const ChatBox = ({
         removeProfileDisconnected(connectionNotice.profile);
     };
 
-    const sendDisconnectNotice = profile => {
-        stompClient.send(`/app/disconnect/${meetingSession.guid}`, {}, JSON.stringify(profile));
-    };
 
 
     const sendConnectNotice = profile => {
         stompClient.send(`/app/connect/${meetingSession.guid}`, {}, JSON.stringify(profile));
     };
 
-    window.onbeforeunload = () => {
-        sendDisconnectNotice(profile);
-    }
+
 
     const sendNewMessage = message => {
         stompClient.send(`/app/send/meeting/${meetingSession.guid}`, {}, JSON.stringify(message));
@@ -94,8 +89,15 @@ const ChatBox = ({
     }, []);
 
     useEffect(() => {
+        const sendDisconnectNotice = profile => {
+            stompClient.send(`/app/disconnect/${meetingSession.guid}`, {}, JSON.stringify(profile));
+        };
+
+        window.onbeforeunload = () => {
+            sendDisconnectNotice(profile);
+        }
         return () => sendDisconnectNotice(profile);
-    }, [sendDisconnectNotice, profile])
+    }, [profile, meetingSession.guid])
 
     const sendMessage = () => {
         let msgOutput = {
