@@ -11,6 +11,7 @@ import {addNewMessage, addProfileConnected, removeProfileDisconnected} from "../
 const wsSourceUrl = "http://localhost:8080/stringify-chat";
 let stompClient = null;
 
+
 const ChatBox = ({
                      meetingSession,
                      profile,
@@ -22,25 +23,18 @@ const ChatBox = ({
     const [message, setMessage] = useState("");
     const [click, setClick] = useState(false);
 
-    const sendDisconnectNotice = profile => {
-        stompClient.send(`/app/disconnect/${meetingSession.guid}`, {}, JSON.stringify(profile));
-    };
-
-
-    const sendConnectNotice = profile => {
-        stompClient.send(`/app/connect/${meetingSession.guid}`, {}, JSON.stringify(profile));
-    };
 
     const onProfileConnects = frame => {
         const connectionNotice = JSON.parse(frame.body);
         console.log(connectionNotice)
 
         const message = {
-            avatar: "connect",
-            from: "Notice",
-            date: connectionNotice.date,
-            content: connectionNotice.connectionMessage
+            avatar: connectionNotice.connectionMessage.avatar,
+            from: connectionNotice.connectionMessage.from,
+            date: connectionNotice.connectionMessage.date,
+            content: connectionNotice.connectionMessage.content
         }
+
         addNewToMessages(message);
         addProfileConnected(connectionNotice.profile);
     };
@@ -53,16 +47,29 @@ const ChatBox = ({
 
 
     const onProfileDisconnects = frame => {
-        const connectionNotice = JSON.parse(frame.body).content;
+        const connectionNotice = JSON.parse(frame.body);
         const message = {
-            avatar: "disconnect",
-            from: "Notice",
-            date: connectionNotice.date,
-            content: connectionNotice.connectionMessage
+            avatar: connectionNotice.connectionMessage.avatar,
+            from: connectionNotice.connectionMessage.from,
+            date: connectionNotice.connectionMessage.date,
+            content: connectionNotice.connectionMessage.content
         }
         addNewToMessages(message);
         removeProfileDisconnected(connectionNotice.profile);
     };
+
+    const sendDisconnectNotice = profile => {
+        stompClient.send(`/app/disconnect/${meetingSession.guid}`, {}, JSON.stringify(profile));
+    };
+
+
+    const sendConnectNotice = profile => {
+        stompClient.send(`/app/connect/${meetingSession.guid}`, {}, JSON.stringify(profile));
+    };
+
+    window.onbeforeunload = () => {
+        sendDisconnectNotice(profile);
+    }
 
     const sendNewMessage = message => {
         stompClient.send(`/app/send/meeting/${meetingSession.guid}`, {}, JSON.stringify(message));
@@ -79,26 +86,25 @@ const ChatBox = ({
             sendConnectNotice(profile);
         });
 
-        return () => sendDisconnectNotice(profile);
+
     });
 
     useEffect(() => {
-
         dangerousOnMount.current();
-
-
     }, []);
 
+    useEffect(() => {
+        return () => sendDisconnectNotice(profile);
+    }, [sendDisconnectNotice, profile])
+
     const sendMessage = () => {
-
-
         let msgOutput = {
             from: profile.name,
             avatar: profile.avatar,
             content: message
         };
 
-        if (message !== ""){
+        if (message !== "") {
             sendNewMessage(msgOutput);
             console.log("Sending message");
         }

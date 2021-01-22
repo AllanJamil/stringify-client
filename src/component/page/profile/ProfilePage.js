@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
+import {connect} from 'react-redux';
+import {v4 as uuidv4} from 'uuid';
+
 import AvatarSlider from "./AvatarSlider";
 import '../home/HeroSection.css';
 import './ProfilePage.css'
 import './NameField.css';
-import {connect} from 'react-redux';
 import {setConnectionStatus, setProfile} from "../../../actions";
 
 const ProfilePage = ({setProfile, connectionStatus, setConnectionStatus, history}) => {
@@ -17,11 +19,12 @@ const ProfilePage = ({setProfile, connectionStatus, setConnectionStatus, history
 
     const createProfile = e => {
         e.preventDefault();
-        const tempProfile = {name, avatar};
+        const guid = uuidv4();
+        const tempProfile = {name, avatar, guid: guid};
         setProfile(tempProfile);
         setName("");
         if (connectionStatus === "CREATE_MEETING") history.push('/connect');
-        if (connectionStatus === "JOIN_MEETING") history.push('/meeting');
+        if (connectionStatus === "FIND_MEETING") history.push('/meeting');
     };
 
     return (

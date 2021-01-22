@@ -2,11 +2,17 @@ import React, {useEffect} from 'react';
 import {ImCheckmark} from 'react-icons/im';
 import {IconContext} from "react-icons";
 
-const Success = ({message, history}) => {
+const Success = ({connectionStatus, message, history}) => {
+
+    let redirect = "";
 
     useEffect(() => {
-       setTimeout(() => history.push("/meeting"), 2000);
-    }, [history]);
+        if (connectionStatus === "CREATE_MEETING")
+            redirect = "/meeting";
+        else
+            redirect = "/profile";
+            setTimeout(() => history.push(redirect), 2000);
+    }, [history, connectionStatus]);
 
     return (
         <div className="status-wrapper">

@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import './ConnectPage.css';
 import Loading from "./Loading";
 import {setConnectionStatus, setMeetingSession, setProfile} from "../../../actions";
-import {createNewMeeting} from "../../../api/endpoints/endpoints";
+import {createNewMeeting, findMeetingByKey, findMeetingByChatId} from "../../../api/endpoints/endpoints";
 import Success from "./Success";
 import Error from "./Error";
 
@@ -27,10 +27,8 @@ const ConnectPage = props => {
 
     const dangerousOnMount = useRef(() => {
         if (props.connectionStatus === null && !props.profile && !getChatId()) {
-            console.log("ConnectionStatus is null and Profile does NOT exist");
             props.history.push("/error");
         } else if (props.connectionStatus === "CREATE_MEETING") {
-
             createNewMeeting(props.profile)
                 .then(response => {
                     props.setProfile(response.data.profile);
@@ -40,14 +38,20 @@ const ConnectPage = props => {
                 .catch(error => setContent({display: "failure", message: error.response.data.message}));
 
         } else if (props.connectionStatus === "FIND_MEETING") {
-            console.log("FIND MEETING BY KEY JAO");
-            console.log(props.keyMeeting)
+            findMeetingByKey(props.keyMeeting)
+                .then(response => {
+                    props.setMeeting(response.data);
+                    setContent({display: "success", message: "Meeting found. Preparing to establish connection to meeting..."});
+                })
+                .catch(error =>  setContent({display: "failure", message: error.response.data.message}));
         } else {
-            console.log("FIND MEETING BY CHAT-ID JAO");
-            console.log(getChatId());
-
-            //set find meeting when
-            return () => props.setConnectionStatus("FIND_MEETING");
+            findMeetingByChatId(getChatId())
+                .then(response => {
+                    props.setMeeting(response.data);
+                    props.setConnectionStatus("FIND_MEETING");
+                    setContent({display: "success", message: "Meeting found. Preparing to establish connection to meeting..."});
+                })
+                .catch(error =>  setContent({display: "failure", message: error.response.data.message}));
         }
     });
 
@@ -61,7 +65,7 @@ const ConnectPage = props => {
         if (content.display === "failure")
             return <Error message={content.message}/>
         else if (content.display === "success")
-            return <Success history={props.history} message={content.message}/>
+            return <Success connectionStatus={props.connectionStatus} history={props.history} message={content.message}/>
         else
             return <Loading message={content.message}/>
     };

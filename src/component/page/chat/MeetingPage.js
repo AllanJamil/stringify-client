@@ -4,9 +4,18 @@ import {connect} from 'react-redux';
 import ChatWindow from "./ChatWindow";
 import './MeetingPage.css';
 import './theme.css';
-import {setChatActive, setConnectionStatus, setKeyMeeting, setMeetingSession, setProfile} from "../../../actions";
+import {
+    addNewMessage,
+    setChatActive,
+    setConnectionStatus,
+    setKeyMeeting,
+    setMeetingSession,
+    setProfile,
+    addProfileConnected
+} from "../../../actions";
 import ChatBox from "./ChatBox";
 import ContactList from "./ContactList";
+import {getMessageHistory, getConnectedProfiles} from "../../../api/endpoints/endpoints";
 
 
 const MeetingPage = (
@@ -19,8 +28,33 @@ const MeetingPage = (
         setKey,
         theme,
         setChatActive,
-        history
+        history,
+        addNewToMessages,
+        addProfileConnected,
+        connectionStatus
     }) => {
+
+    useEffect(() => {
+        if (meetingSession) {
+            getMessageHistory(meetingSession.guid, 0)
+                .then(response => {
+                    response.data.forEach(message => {
+                        addNewToMessages(message);
+                    });
+                })
+                .catch(error => console.log(error));
+
+            if (connectionStatus !== "CREATE_MEETING")
+            getConnectedProfiles(meetingSession.guid)
+                .then(response => {
+                    response.data.forEach(profile => {
+                        addProfileConnected(profile);
+                    });
+                })
+                .catch(error => console.log(error));
+        }
+
+    }, []);
 
     useEffect(() => {
         // when component mounts
@@ -43,7 +77,7 @@ const MeetingPage = (
 
     return (
         <div className="container-chat">
-            <ChatWindow theme={theme} />
+            <ChatWindow theme={theme}/>
             {
                 meetingSession ?
                     <ChatBox profile={profile} meetingSession={meetingSession} theme={theme}/>
@@ -59,7 +93,8 @@ const mapStateToProps = (state) => {
     return {
         theme: state.selectedTheme,
         profile: state.profile,
-        meetingSession: state.meetingSession
+        meetingSession: state.meetingSession,
+        connectionStatus: state.connectionStatus
     };
 };
 
@@ -68,8 +103,10 @@ const mapDispatchToProps = (dispatch) => {
         setChatActive: e => dispatch(setChatActive(e)),
         setProfile: e => dispatch(setProfile(e)),
         setConnectionStatus: e => dispatch(setConnectionStatus(e)),
-        setMeeting: e => dispatch(setMeetingSession(e)), // unresolved if named setMeetingSession?
-        setKey: e => dispatch(setKeyMeeting(e)) // unresolved if named setKeyMeeting?
+        setMeeting: e => dispatch(setMeetingSession(e)),
+        setKey: e => dispatch(setKeyMeeting(e)),
+        addNewToMessages: e => dispatch(addNewMessage(e)),
+        addProfileConnected: e => dispatch(addProfileConnected(e))
     };
 };
 

@@ -53,7 +53,7 @@ const profilesConnectedReducer = (profilesConnected = [], action) => {
   if (action.type === 'PROFILE_CONNECT')
       return [...profilesConnected, action.payload];
   else if (action.type === 'PROFILE_DISCONNECT')
-      return profilesConnected.filter(guid => guid !== action.payload.guid);
+      return profilesConnected.filter(profile => profile.guid !== action.payload.guid);
 
     return profilesConnected;
 };

@@ -36,6 +36,14 @@
     border: 3px solid #009677;
 }
 
+.message-wrapper .connect {
+    border: none;
+}
+
+.message-wrapper .disconnect {
+    border: none;
+}
+
 .message-detail {
     margin-top: 10px;
     margin-left: 15px
