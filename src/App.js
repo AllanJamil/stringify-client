@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import LandingPage from './component/page/home/LandingPage';
 import ChatPage from './component/page/chat/MeetingPage';
@@ -11,9 +11,16 @@ import ProfilePage from "./component/page/profile/ProfilePage";
 import ConnectPage from "./component/page/connection/ConnectPage";
 import Footer from "./component/Footer";
 import {connect} from 'react-redux';
+import {pingServer} from "./api/endpoints/endpoints";
 
 
 const App = ({isChatActive}) => {
+
+    useEffect(() => {
+        pingServer()
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
+    },[]);
 
     return (
         <div>

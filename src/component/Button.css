@@ -115,6 +115,7 @@ primary:disabled {
     font-weight: bold;
     text-transform: uppercase;
     font-size: medium;
+    letter-spacing: 2px;
 }
 
 .field {
@@ -152,22 +153,23 @@ primary:disabled {
         text-align: center;
         background: white !important;
         color: #f00946 !important;
-
-
     }
 }
 
 .nav-field::-webkit-input-placeholder {
     text-transform: none;
     color: #c3c3c3;
+    letter-spacing: normal;
 }
 
 .nav-field:-ms-input-placeholder {
     text-transform: none;
     color: #c3c3c3;
+    letter-spacing: normal;
 }
 
 .nav-field::placeholder {
     text-transform: none;
     color: #c3c3c3;
+    letter-spacing: normal;
 }

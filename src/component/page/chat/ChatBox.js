@@ -129,7 +129,7 @@ const ChatBox = ({
     return (
         <div className={`container-chatbox ${theme}`}>
 
-            <Settings meetingSession={meetingSession} click={click} theme={theme}
+            <Settings profile={profile} meetingSession={meetingSession} click={click} theme={theme}
                       setClick={(event) => setClick(event)}/>
 
             <div className="chat-area">

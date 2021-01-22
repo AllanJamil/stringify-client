@@ -8,16 +8,24 @@ import Tooltip from "react-bootstrap/Tooltip"
 import ContactList from "./ContactList";
 import Toggle from "./Toggle";
 import CopyButton from "./CopyButton";
+import {inviteByMail} from "../../../api/endpoints/endpoints";
 
-const Settings = ({meetingSession, theme, setClick, click}) => {
+const Settings = ({profile, meetingSession, theme, setClick, click}) => {
 
     const [copied, setCopied] = useState(false);
+    const [email, setEmail] = useState("");
 
     useEffect(() => {
-
         setTimeout(() => setCopied(false), 2000);
-
     }, [copied]);
+
+    const sendInvitation = () => {
+        inviteByMail(email, profile.name, meetingSession.guid)
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
+
+        setEmail("");
+    }
 
     return (
         <div className={`settings ${click ? "active" : null} ${theme}`}>
@@ -53,7 +61,13 @@ const Settings = ({meetingSession, theme, setClick, click}) => {
                 <tr>
                     <td>Invite by email:</td>
                     <td>
-                        <input className="invite-field" type="email" placeholder="Email"/>
+                        <input
+                            onChange={event => setEmail(event.target.value)}
+                            value={email}
+                            className="invite-field"
+                            type="email"
+                            placeholder="Email"
+                        />
                     </td>
                     <td>
                         <OverlayTrigger
@@ -64,7 +78,7 @@ const Settings = ({meetingSession, theme, setClick, click}) => {
                                 </Tooltip>
                             }
                         >
-                            <div className="icon">
+                            <div onClick={sendInvitation} className="icon">
                                 <IconContext.Provider value={{color: theme === 'dark' ? '#d2dad9' : '#676767'}}>
                                     <span><IoSend size={25}/></span>
                                 </IconContext.Provider>
