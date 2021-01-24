@@ -20,7 +20,7 @@ const Navbar = ({setConnectionStatus, setKey, history}) => {
     }
 
     const onJoinMeeting = () => {
-        setKey(keyValue);
+        setKey(keyValue.toUpperCase());
         setConnectionStatus("FIND_MEETING");
         closeMobileMenu();
         history.push('/connect');
