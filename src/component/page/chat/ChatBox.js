@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 
 import {addNewMessage, addProfileConnected, removeProfileDisconnected} from "../../../actions";
 
-const wsSourceUrl = "http://localhost:8080/stringify-chat";
+const wsSourceUrl = "https://stringify-chat.herokuapp.com/stringify-chat";
 let stompClient = null;
 
 
