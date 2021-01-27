@@ -10,6 +10,16 @@ import Toggle from "./Toggle";
 import CopyButton from "./CopyButton";
 import {inviteByMail} from "../../../api/endpoints/endpoints";
 
+/**
+ * Global settings for a chat session.
+ * @param profile
+ * @param meetingSession
+ * @param theme
+ * @param setClick
+ * @param click
+ * @returns {*}
+ * @constructor
+ */
 const Settings = ({profile, meetingSession, theme, setClick, click}) => {
 
     const [copied, setCopied] = useState(false);
@@ -19,6 +29,9 @@ const Settings = ({profile, meetingSession, theme, setClick, click}) => {
         setTimeout(() => setCopied(false), 2000);
     }, [copied]);
 
+    /**
+     * A method that sends invitational emails.
+     */
     const sendInvitation = () => {
         inviteByMail(email, profile.name, meetingSession.guid)
             .then(response => console.log(response))

@@ -1,6 +1,13 @@
 import React from 'react';
 import './InformationPage.css';
 
+/**
+ * QA Component for rendering out questions and answers.
+ * @param question
+ * @param answer
+ * @returns {*}
+ * @constructor
+ */
 const QaComponent = ({question, answer}) => {
     return (
         <div className="question-wrapper">

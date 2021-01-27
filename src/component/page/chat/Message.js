@@ -1,5 +1,12 @@
 import React from 'react';
 
+/**
+ * A component that renders a message.
+ * @param message
+ * @param theme
+ * @returns {*}
+ * @constructor
+ */
 const Message = ({message, theme}) => {
     return (
         <div>

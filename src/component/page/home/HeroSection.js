@@ -3,7 +3,9 @@ import './HeroSection.css';
 import {Button} from "../../Button";
 import {Link} from 'react-router-dom';
 
-
+/**
+ * Hero section component.
+ */
 function HeroSection({
                          lightBg,
                          topLine,

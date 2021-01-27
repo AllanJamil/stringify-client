@@ -9,6 +9,10 @@ import logo from '../images/stringify-logo.png';
 import {Button} from "./Button";
 import {setConnectionStatus, setKeyMeeting} from "../actions";
 
+/**
+ * Navbar component.
+ *
+ */
 const Navbar = ({setConnectionStatus, setKey, history}) => {
     const [click, setClick] = useState(false);
     const [keyValue, setKeyValue] = useState("");
@@ -17,15 +21,18 @@ const Navbar = ({setConnectionStatus, setKey, history}) => {
     const closeMobileMenu = () => {
         window.scrollTo(0, 0);
         setClick(false);
-    }
+    };
 
+   /**
+    * On join meeting, redirects to connect page.
+    */
     const onJoinMeeting = () => {
         setKey(keyValue.toUpperCase());
         setConnectionStatus("FIND_MEETING");
         closeMobileMenu();
         history.push('/connect');
         setKeyValue("");
-    }
+    };
 
     return (
         <div className={`navbar ${!click ? null : 'static'}`}>
@@ -77,7 +84,9 @@ const Navbar = ({setConnectionStatus, setKey, history}) => {
     );
 };
 
-
+/**
+ * A method that allows redux actions to be dispatched.
+ */
 const mapDispatchToProps = dispatch => {
   return {
       setKey: e => dispatch(setKeyMeeting(e)),

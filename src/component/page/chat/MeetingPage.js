@@ -92,6 +92,9 @@ const MeetingPage = (
     );
 };
 
+/**
+ * Maps the current redux states to props.
+ */
 const mapStateToProps = (state) => {
     return {
         theme: state.selectedTheme,
@@ -101,6 +104,9 @@ const mapStateToProps = (state) => {
     };
 };
 
+/**
+ * A method that allows redux actions to be dispatched.
+ */
 const mapDispatchToProps = (dispatch) => {
     return {
         setChatActive: e => dispatch(setChatActive(e)),

@@ -3,6 +3,9 @@ import './Footer.css';
 import logo from '../images/stringify-logo.png';
 import {Link} from "react-router-dom";
 
+/**
+ * Footer component.
+ */
 const Footer = () => {
     return (
         <div>

@@ -5,7 +5,9 @@ import {FaArrowRight, FaArrowLeft} from "react-icons/fa";
 import './AvatarSlider.css';
 import {images} from "./AvatarData";
 
-
+/**
+ * Renders avatar options.
+ */
 const AvatarSlider = ({setAvatar}) => {
 
     const NextArrow = ({onClick}) => {
@@ -29,7 +31,6 @@ const AvatarSlider = ({setAvatar}) => {
     useEffect(() => {
         setAvatar("avatar" + (imageIndex + 1));
     }, [imageIndex, setAvatar]);
-
 
     const renderImages = images.map((img, idx) => {
 

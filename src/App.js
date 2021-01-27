@@ -13,7 +13,9 @@ import Footer from "./component/Footer";
 import {connect} from 'react-redux';
 import {pingServer} from "./api/endpoints/endpoints";
 
-
+/**
+ * Main application component.
+ */
 const App = ({isChatActive}) => {
 
     useEffect(() => {
@@ -43,6 +45,9 @@ const App = ({isChatActive}) => {
     );
 };
 
+/**
+ * Maps the current redux states to props.
+ */
 const mapStateToProps = (state) => {
     return {
         isChatActive: state.isChatActive

@@ -8,6 +8,15 @@ import './ProfilePage.css'
 import './NameField.css';
 import {setConnectionStatus, setProfile} from "../../../actions";
 
+/**
+ * Profile page component.
+ * @param setProfile
+ * @param connectionStatus
+ * @param setConnectionStatus
+ * @param history
+ * @returns {*}
+ * @constructor
+ */
 const ProfilePage = ({setProfile, connectionStatus, setConnectionStatus, history}) => {
 
     const [avatar, setAvatar] = useState("");
@@ -17,6 +26,9 @@ const ProfilePage = ({setProfile, connectionStatus, setConnectionStatus, history
         if (connectionStatus === null) setConnectionStatus("CREATE_MEETING");
     }, [connectionStatus, setConnectionStatus]);
 
+    /**
+     * Creates a profile.
+     */
     const createProfile = e => {
         e.preventDefault();
         const guid = uuidv4();
@@ -53,12 +65,18 @@ const ProfilePage = ({setProfile, connectionStatus, setConnectionStatus, history
     );
 };
 
+/**
+ * Maps the current redux states to props.
+ */
 const mapStateToProps = state => {
     return {
         connectionStatus: state.connectionStatus
     };
 };
 
+/**
+ * A method that allows redux actions to be dispatched.
+ */
 const mapDispatchToProps = dispatch => {
     return {
         setProfile: e => dispatch(setProfile(e)),

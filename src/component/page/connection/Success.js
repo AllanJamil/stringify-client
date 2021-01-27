@@ -2,6 +2,14 @@ import React, {useEffect} from 'react';
 import {ImCheckmark} from 'react-icons/im';
 import {IconContext} from "react-icons";
 
+/**
+ * Component that shows a successful message of any action.
+ * @param connectionStatus
+ * @param message
+ * @param history
+ * @returns {*}
+ * @constructor
+ */
 const Success = ({connectionStatus, message, history}) => {
 
 

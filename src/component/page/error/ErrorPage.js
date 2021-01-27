@@ -2,6 +2,11 @@ import React from 'react';
 import notFound from '../../../images/404.gif';
 import './ErrorPage.css'
 
+/**
+ * Error page component.
+ * @returns {*}
+ * @constructor
+ */
 const ErrorPage = () => {
     return (
         <div className="container-error">

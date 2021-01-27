@@ -12,6 +12,17 @@ const wsSourceUrl = "https://stringify-chat.herokuapp.com/stringify-chat";
 let stompClient = null;
 
 
+/**
+ * A chatbox component where you can send and receive messages, also handles the websocket/stomp connections.
+ * @param meetingSession
+ * @param profile
+ * @param theme
+ * @param addNewToMessages
+ * @param addProfileConnected
+ * @param removeProfileDisconnected
+ * @returns {*}
+ * @constructor
+ */
 const ChatBox = ({
                      meetingSession,
                      profile,
@@ -23,7 +34,11 @@ const ChatBox = ({
     const [message, setMessage] = useState("");
     const [click, setClick] = useState(false);
 
-
+    /**
+     * A method that executes when a profile connects.
+     * This method is invoked when a server publishes a new connected profile.
+     * @param frame
+     */
     const onProfileConnects = frame => {
         const connectionNotice = JSON.parse(frame.body);
         console.log(connectionNotice)
@@ -39,13 +54,22 @@ const ChatBox = ({
         addProfileConnected(connectionNotice.profile);
     };
 
+    /**
+     * A new message is added to redux state.
+     * This method is invoked when a new message is published by the server.
+     * @param frame
+     */
     const onMessageReceived = frame => {
         const message = JSON.parse(frame.body);
         console.log(message)
         addNewToMessages(message);
     };
 
-
+    /**
+     * A method that runs when a profile disconnects.
+     * This method is invoked when a client disconnects from the server.
+     * @param frame
+     */
     const onProfileDisconnects = frame => {
         const connectionNotice = JSON.parse(frame.body);
         const message = {
@@ -58,14 +82,18 @@ const ChatBox = ({
         removeProfileDisconnected(connectionNotice.profile);
     };
 
-
-
+    /**
+     * A method that sends a connection notice to the server.
+     * @param profile
+     */
     const sendConnectNotice = profile => {
         stompClient.send(`/app/connect/${meetingSession.guid}`, {}, JSON.stringify(profile));
     };
 
-
-
+    /**
+     * A method that sends a new message to the server.
+     * @param message
+     */
     const sendNewMessage = message => {
         stompClient.send(`/app/send/meeting/${meetingSession.guid}`, {}, JSON.stringify(message));
     };
@@ -99,6 +127,9 @@ const ChatBox = ({
         return () => sendDisconnectNotice(profile);
     }, [profile, meetingSession.guid])
 
+    /**
+     * A method that sends a message.
+     */
     const sendMessage = () => {
         let msgOutput = {
             from: profile.name,
@@ -114,6 +145,10 @@ const ChatBox = ({
         setMessage("");
     }
 
+    /**
+     * A method that sends a message when pressing ENTER on the keyboard.
+     * @param event
+     */
     const onEnter = (event) => {
 
         if (event.keyCode === 13) {
@@ -162,6 +197,9 @@ const ChatBox = ({
     );
 };
 
+/**
+ * A method that allows redux actions to be dispatched.
+ */
 const mapDispatchToProps = dispatch => {
     return {
         addNewToMessages: e => dispatch(addNewMessage(e)),

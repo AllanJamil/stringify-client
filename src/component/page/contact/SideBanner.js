@@ -2,6 +2,11 @@ import React from 'react';
 import './ContactPage.css';
 import email from '../../../images/letter-icon.png';
 
+/**
+ * The side banner.
+ * @returns {*}
+ * @constructor
+ */
 const SideBanner = () => {
     return (
         <div className="side-container">

@@ -2,7 +2,9 @@ import chatIcon from '../../../images/chat-icon.png';
 import information from '../../../images/information.png';
 import contact from '../../../images/contact.png';
 
-
+/**
+ * Returns settings for a hero section.
+ */
 export const homeObjOne = {
     lightBg: false,
     lightText: true,
@@ -19,7 +21,9 @@ export const homeObjOne = {
     alt: 'ChatBox-bubble'
 };
 
-
+/**
+ * Returns settings for a hero section.
+ */
 export const homeObjTwo = {
     lightBg: true,
     lightText: false,
@@ -36,6 +40,9 @@ export const homeObjTwo = {
     alt: 'ChatBox-bubble'
 };
 
+/**
+ * Returns settings for a hero section.
+ */
 export const homeObjThree = {
     lightBg: false,
     lightText: true,

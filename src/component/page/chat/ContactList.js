@@ -2,6 +2,14 @@ import React from 'react';
 import ContactDetail from "./ContactDetail";
 import {connect} from 'react-redux';
 
+/**
+ * Takes in a contact detail and also renders a list of all connected profiles.
+ * @param device
+ * @param profilesConnected
+ * @param theme
+ * @returns {*}
+ * @constructor
+ */
 const ContactList = ({device, profilesConnected, theme}) => {
 
         const renderContacts = profilesConnected.map(contact => {
@@ -12,15 +20,13 @@ const ContactList = ({device, profilesConnected, theme}) => {
         <div className={`contact-list ${device} ${theme}`}>
             <div className="contact-header">IN MEETING</div>
             {renderContacts}
-{/*            <ContactDetail theme={theme} contact={{name: "pedram", avatar: "avatar20"}}/>
-            <ContactDetail theme={theme} contact={{name: "Allan", avatar: "avatar16"}}/>
-            <ContactDetail theme={theme} contact={{name: "Sara", avatar: "avatar1"}}/>
-            <ContactDetail theme={theme} contact={{name: "Sara", avatar: "avatar1"}}/>
-            <ContactDetail theme={theme} contact={{name: "Sara", avatar: "avatar1"}}/>*/}
         </div>
     );
 };
 
+/**
+ * Maps the current redux states to props.
+ */
 const mapStateToProps = state => {
     return {
         profilesConnected: state.profilesConnected

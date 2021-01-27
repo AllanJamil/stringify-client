@@ -1,5 +1,12 @@
 import React from 'react';
 
+/**
+ * Contact details component which renders profile name and avatar.
+ * @param contact
+ * @param theme
+ * @returns {*}
+ * @constructor
+ */
 const ContactDetail = ({contact, theme}) => {
 
 

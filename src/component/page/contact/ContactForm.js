@@ -1,6 +1,11 @@
 import React from 'react';
 import './ContactPage.css';
 
+/**
+ * Contact form component.
+ * @returns {*}
+ * @constructor
+ */
 const ContactForm = () => {
     return (
         <div className="contact-form">

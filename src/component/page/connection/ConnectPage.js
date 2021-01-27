@@ -8,6 +8,10 @@ import {createNewMeeting, findMeetingByKey, findMeetingByChatId} from "../../../
 import Success from "./Success";
 import Error from "./Error";
 
+/**
+ * Gets Chat Id from the browsers URL bar.
+ * @returns {string|null}
+ */
 const getChatId = () => {
     let url = window.location.href;
 
@@ -17,6 +21,12 @@ const getChatId = () => {
         return null;
 };
 
+/**
+ * Connect page component which handles different actions depending on connection status.
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
 const ConnectPage = props => {
 
     const [content, setContent] = useState(
@@ -61,6 +71,10 @@ const ConnectPage = props => {
         dangerousOnMount.current();
     }, []);
 
+    /**
+     * Displays different components depending on outcome of response of an api call.
+     * @returns {*}
+     */
     const displayContent = () => {
         if (content.display === "failure")
             return <Error message={content.message}/>
@@ -77,6 +91,9 @@ const ConnectPage = props => {
     );
 };
 
+/**
+ * Maps the current redux states to props.
+ */
 const mapStateToProps = state => {
     return {
         connectionStatus: state.connectionStatus,
@@ -85,6 +102,9 @@ const mapStateToProps = state => {
     };
 };
 
+/**
+ * A method that allows redux actions to be dispatched.
+ */
 const mapDispatchToProps = dispatch => {
     return {
         setConnectionStatus: e => dispatch(setConnectionStatus(e)),

@@ -3,7 +3,11 @@ import QaComponent from "./QAComponent";
 import './InformationPage.css';
 import {questionFive, questionFour, questionOne, questionSix, questionThree, questionTwo} from "./Data";
 
-
+/**
+ * Information page component which loads QA Components.
+ * @returns {*}
+ * @constructor
+ */
 const InformationPage = () => {
     return (
         <div className="container-info">

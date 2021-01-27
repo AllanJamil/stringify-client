@@ -4,24 +4,35 @@ import Message from "./Message";
 import './scrollbar.css';
 import {connect} from 'react-redux';
 
+/**
+ * A chat window component to display messages.
+ * @param messages
+ * @param theme
+ * @returns {*}
+ * @constructor
+ */
 const ChatWindow = ({messages, theme}) => {
 
     const bottom = useRef();
 
+    /**
+     * Scrolls to bottom.
+     */
     const scrollToBottom = () => {
         bottom.current.scrollIntoView({block: "end", inline: "end"});
     };
 
-    //TODO: fix scroll to bottom
     useEffect(() => {
         scrollToBottom();
 
     }, [messages])
 
-
-        const renderMessages = messages.map(message => {
-           return <Message key={message.guid} message={message} theme={theme}/>
-        });
+    /**
+     * Renders all the messages.
+     */
+    const renderMessages = messages.map(message => {
+        return <Message key={message.guid} message={message} theme={theme}/>
+    });
 
     return (
         <div className={`chat-window ${theme}`}>
@@ -31,6 +42,9 @@ const ChatWindow = ({messages, theme}) => {
     );
 };
 
+/**
+ * Maps the current redux states to props.
+ */
 const mapStateToProps = state => {
     return {
         messages: state.messages

@@ -5,6 +5,14 @@ import {IoCopy} from "react-icons/io5";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
+/**
+ * A copy button for copying values.
+ * @param setCopied
+ * @param toCopy
+ * @param theme
+ * @returns {*}
+ * @constructor
+ */
 const CopyButton = ({setCopied, toCopy, theme}) => {
     return (
         <div>

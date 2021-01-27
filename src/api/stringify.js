@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-//TODO change baseURL to https://stringify-chat.netlify.app
+/**
+ * Sets the default baseURL using Axios to simplify future api calls to the server.
+ */
 export default axios.create({
     baseURL:'https://stringify-chat.herokuapp.com/'
 });
