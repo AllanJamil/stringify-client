@@ -63,7 +63,7 @@
 .message-content {
     padding-top: 5px;
     font-size: 110%;
-    word-break: break-all;
+    word-break: break-word;
     text-wrap: initial;
     white-space: pre-wrap;       /* Since CSS 2.1 */
     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
