@@ -15,7 +15,7 @@ const Error = ({message}) => {
                 ERROR: {message}
                 <br/>
                 <br/>
-                Bla bla bla
+                Please try again or start a new meeting.
             </h2>
         </div>
     );
