@@ -145,6 +145,8 @@ primary:disabled {
         flex-direction: column;
         justify-content: space-evenly;
         width: 80% !important;
+        overflow: visible;
+        height: 100px !important;
     }
 
     .nav-field {
