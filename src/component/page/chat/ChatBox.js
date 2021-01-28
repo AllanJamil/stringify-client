@@ -41,7 +41,6 @@ const ChatBox = ({
      */
     const onProfileConnects = frame => {
         const connectionNotice = JSON.parse(frame.body);
-        console.log(connectionNotice)
 
         const message = {
             avatar: connectionNotice.connectionMessage.avatar,
@@ -61,7 +60,6 @@ const ChatBox = ({
      */
     const onMessageReceived = frame => {
         const message = JSON.parse(frame.body);
-        console.log(message)
         addNewToMessages(message);
     };
 
@@ -102,6 +100,7 @@ const ChatBox = ({
         stompClient = Stomp.over(() => {
             return new SockJS(wsSourceUrl)
         });
+        stompClient.debug = () => {};
         stompClient.connect({}, () => {
             stompClient.subscribe(`/queue/connect/${meetingSession.guid}`, onProfileConnects);
             stompClient.subscribe(`/queue/meeting/${meetingSession.guid}`, onMessageReceived);
@@ -139,7 +138,6 @@ const ChatBox = ({
 
         if (message !== "") {
             sendNewMessage(msgOutput);
-            console.log("Sending message");
         }
 
         setMessage("");
@@ -153,7 +151,6 @@ const ChatBox = ({
 
         if (event.keyCode === 13) {
             if (event.shiftKey) {
-                console.log("new line")
             } else {
                 event.preventDefault();
                 sendMessage();
