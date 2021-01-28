@@ -146,6 +146,7 @@ primary:disabled {
         justify-content: space-evenly;
         width: 80% !important;
         overflow: visible;
+        /*TODO FIX HEIGHT BUTTON CLIPPING BUG SAFARI*/
         height: 100px !important;
     }
 
