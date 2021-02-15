@@ -6,7 +6,7 @@ import {Stomp} from "@stomp/stompjs";
 import SockJS from "sockjs-client";
 import {connect} from 'react-redux';
 
-import {addNewMessage, addProfileConnected, removeProfileDisconnected} from "../../../actions";
+import {addNewMessage, addProfileConnected, removeProfileDisconnected, setProfile} from "../../../actions";
 
 const wsSourceUrl = "https://stringify-chat.herokuapp.com/stringify-chat";
 let stompClient = null;
@@ -29,7 +29,8 @@ const ChatBox = ({
                      theme,
                      addNewToMessages,
                      addProfileConnected,
-                     removeProfileDisconnected
+                     removeProfileDisconnected,
+                     setProfile
                  }) => {
     const [message, setMessage] = useState("");
     const [click, setClick] = useState(false);
@@ -50,7 +51,10 @@ const ChatBox = ({
         }
 
         addNewToMessages(message);
-        addProfileConnected(connectionNotice.profile);
+
+        console.log(connectionNotice.profile)
+        if (profile.guid !== connectionNotice.profile.guid)
+            addProfileConnected(connectionNotice.profile);
     };
 
     /**
@@ -100,7 +104,8 @@ const ChatBox = ({
         stompClient = Stomp.over(() => {
             return new SockJS(wsSourceUrl)
         });
-        stompClient.debug = () => {};
+        stompClient.debug = () => {
+        };
         stompClient.connect({}, () => {
             stompClient.subscribe(`/queue/connect/${meetingSession.guid}`, onProfileConnects);
             stompClient.subscribe(`/queue/meeting/${meetingSession.guid}`, onMessageReceived);
@@ -123,7 +128,10 @@ const ChatBox = ({
         window.onbeforeunload = () => {
             sendDisconnectNotice(profile);
         }
-        return () => sendDisconnectNotice(profile);
+        return () => {
+            sendDisconnectNotice(profile);
+            stompClient.disconnect();
+        }
     }, [profile, meetingSession.guid])
 
     /**
@@ -201,7 +209,8 @@ const mapDispatchToProps = dispatch => {
     return {
         addNewToMessages: e => dispatch(addNewMessage(e)),
         addProfileConnected: e => dispatch(addProfileConnected(e)),
-        removeProfileDisconnected: e => dispatch(removeProfileDisconnected(e))
+        removeProfileDisconnected: e => dispatch(removeProfileDisconnected(e)),
+        setProfile: e => dispatch(setProfile(e))
     };
 };
 

@@ -78,12 +78,20 @@
     background-color: #c3c3c3;
     width: 20%;
     padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 .contact-header {
     font-weight: bold;
     color: #676767;
     margin-bottom: 5px;
+}
+
+.connected-as-container {
+    border-top: 1px solid #676767;
+    padding-top: 10px;
 }
 
 .contact-detail-wrapper {
@@ -101,6 +109,7 @@
 .contact-name {
     font-weight: bold;
     margin-left: 10px;
+    word-break: break-word;
 }
 
 .contact-detail-wrapper {

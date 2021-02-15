@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
  * @returns {*}
  * @constructor
  */
-const ContactList = ({device, profilesConnected, theme}) => {
+const ContactList = ({device, profile, profilesConnected, theme}) => {
 
         const renderContacts = profilesConnected.map(contact => {
             return <ContactDetail key={contact.guid} theme={theme} contact={{name: contact.name, avatar: contact.avatar}}/>;
@@ -18,8 +18,14 @@ const ContactList = ({device, profilesConnected, theme}) => {
 
     return (
         <div className={`contact-list ${device} ${theme}`}>
-            <div className="contact-header">IN MEETING</div>
-            {renderContacts}
+            <div>
+                <div className="contact-header">IN MEETING</div>
+                {renderContacts}
+            </div>
+            <div className="connected-as-container" >
+                <div className="contact-header">CONNECTED AS</div>
+                <ContactDetail theme={theme} contact={profile} />
+            </div>
         </div>
     );
 };
@@ -29,7 +35,8 @@ const ContactList = ({device, profilesConnected, theme}) => {
  */
 const mapStateToProps = state => {
     return {
-        profilesConnected: state.profilesConnected
+        profilesConnected: state.profilesConnected,
+        profile: state.profile
     };
 };
 
